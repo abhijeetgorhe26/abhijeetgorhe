@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhijeet Gorhe | Content Strategist &amp; Motion Designer</title>
+    <meta name="description" content="Portfolio of Abhijeet Gorhe — content strategist, video editor and motion designer from Malegaon, Nashik.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Sleek, artistic, and modern geometric fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="clean-grid"></div>
+
+    <header class="header">
+        <div class="logo">Abhijeet Gorhe<span class="did">.</span></div>
+        
+        <!-- Mobile Navigation Pill (Reference Design) -->
+        <div class="mobile-nav-pill d-md-none">
+            <button class="nav-arrow prev" aria-label="Previous Section">←</button>
+            <span id="current-section">Home</span>
+            <button class="nav-arrow next" aria-label="Next Section">→</button>
+        </div>
+
+        <nav class="nav d-none d-md-flex">
+            <a href="#about">About</a>
+            <a href="#portfolio">Work</a>
+            <a href="#proof">Proof</a>
+            <a href="#experience">Experience</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-actions">
+            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
+                <span class="icon-sun">☀️</span>
+                <span class="icon-moon" style="display:none;">🌙</span>
+            </button>
+            <a href="#contact" class="hire-pill-btn">Let's Hire</a>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero section">
+            <div class="hero-content">
+                <div class="ai-badge">
+                    <span class="dot"></span> Available to work
+                </div>
+                <h1 class="hero-title">Content Strategist <br> & <span class="text-gradient">Motion Designer</span></h1>
+                <p class="hero-desc">I help brands and creators grow with <span
+                        class="highlight">content strategy</span>, <span class="highlight">animation</span>, <span
+                        class="highlight">video editing</span> &amp; <span class="highlight">design</span> — built on
+                    audience psychology, not guesswork.</p>
+                <div class="hero-actions">
+                    <a href="#portfolio" class="artistic-btn primary">View Projects</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="profile-container">
+                    <img src="resource/abhijeet-gorhe.jpg" alt="Abhijeet Gorhe" class="profile-img">
+                    <div class="profile-ring"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about section">
+            <div class="section-header">
+                <h2 class="text-gradient-alt">About Me.</h2>
+            </div>
+            <div class="about-content">
+                <p class="large-text">Hi, I’m <span class="text-gradient">Abhijeet Rajshree Sanjay Gorhe</span> — a
+                    content strategist and motion designer from Malegaon, Nashik.</p>
+                <p>I studied Computer Science (B.Tech) at <span class="highlight">Walchand College of Engineering,
+                        Sangli</span> (batch 2022–2026). For the last two years I’ve been working hands-on with social
+                    media platforms and growing my own YouTube channel.</p>
+                <p>I think about content the way an audience feels it: what makes someone stop scrolling, stay, and
+                    come back. If you want to grow with animation, video editing or design, that’s exactly what I
+                    do.</p>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio section">
+            <div class="section-header">
+                <h2>Sample Work.</h2>
+                <p>Recent work — storytelling, explainers and short-form ads.</p>
+            </div>
+
+            <div class="slider-container">
+                <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+
+                <div class="slider-wrapper">
+                    <div class="slider-track">
+                        <div class="slide-item">
+                            <div class="video-hd-wrapper">
+                                <video src="resource/portfolio-reel.mp4" poster="resource/portfolio-reel.jpg" playsinline controls preload="metadata"></video>
+                            </div>
+                            <div class="slide-details">
+                                <span class="category-tag">Short-form Ad</span>
+                                <h3>Portfolio Reel</h3>
+                            </div>
+                        </div>
+                        <div class="slide-item">
+                            <div class="video-hd-wrapper landscape">
+                                <video src="resource/docker-explainer.mp4" poster="resource/docker-explainer.jpg" playsinline controls preload="metadata"></video>
+                            </div>
+                            <div class="slide-details">
+                                <span class="category-tag">Motion Graphics</span>
+                                <h3>Docker Explainer</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="slider-btn next-btn" aria-label="Next Slide">
+                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section id="proof" class="proof section">
+            <div class="section-header">
+                <h2 class="text-gradient-alt">Proof.</h2>
+                <p>My own YouTube channel: <span class="highlight">40.7K views</span>, <span class="highlight">+750 subscribers</span> and <span class="highlight">963 watch hours</span> in just 40 days — quality content, no shortcuts.</p>
+            </div>
+            <figure class="proof-shot">
+                <img src="resource/youtube-growth.png" alt="YouTube Studio analytics showing one month of channel growth"
+                    loading="lazy" onerror="this.closest('section').hidden = true">
+            </figure>
+        </section>
+
+        <section id="experience" class="experience section">
+            <div class="section-header">
+                <h2 class="text-gradient-alt">Experience.</h2>
+                <p>Professional editing expertise and primary focuses.</p>
+            </div>
+            <div class="exp-container">
+                <div class="exp-block">
+                    <h3>2 Years on Social Media</h3>
+                    <p>What I make:</p>
+                    <ul class="pro-list">
+                        <li><span class="list-icon">►</span> Content Strategy</li>
+                        <li><span class="list-icon">►</span> Reels / Shorts</li>
+                        <li><span class="list-icon">►</span> Motion Graphics &amp; Animation</li>
+                        <li><span class="list-icon">►</span> Explainer Videos</li>
+                        <li><span class="list-icon">►</span> Map Storytelling</li>
+                        <li><span class="list-icon">►</span> Graphic Design</li>
+                    </ul>
+                </div>
+
+                <div class="exp-block">
+                    <h3>Primary Focus</h3>
+                    <ul class="pro-list">
+                        <li><span class="list-icon">►</span> Audience Retention</li>
+                        <li><span class="list-icon">►</span> Trending Styles</li>
+                        <li><span class="list-icon">►</span> Smooth Visual Flow</li>
+                        <li><span class="list-icon">►</span> Audience Psychology</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section">
+            <div class="section-header">
+                <h2>Stay in Touch.</h2>
+            </div>
+            <div class="contact-links">
+                <a href="mailto:abhijeetgorhe8@gmail.com" class="contact-item">
+                    <span class="contact-label">Email</span>
+                    <span class="contact-value">abhijeetgorhe8@gmail.com</span>
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                    </svg>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>©2026 Abhijeet Gorhe. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
