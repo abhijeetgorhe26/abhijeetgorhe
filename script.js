@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ['.proof-shot', 0],
         ['.exp-block', 0.15],
         ['.pro-list li', 0.06],
+        ['.contact-form', 0],
         ['.contact-item', 0.12],
         ['.footer', 0],
     ];
@@ -95,6 +96,94 @@ document.addEventListener('DOMContentLoaded', () => {
     };
     window.addEventListener('scroll', updateScrollProgress, { passive: true });
     updateScrollProgress();
+
+    // --- Contact Form (emails via FormSubmit) ---
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        const freeEmailDomains = ['gmail.com', 'yahoo.com', 'yahoo.in', 'hotmail.com', 'outlook.com', 'live.com', 'icloud.com', 'rediffmail.com', 'proton.me', 'protonmail.com'];
+        const statusEl = contactForm.querySelector('.form-status');
+        const submitBtn = contactForm.querySelector('.form-submit');
+        const btnLabel = submitBtn.querySelector('.btn-label');
+
+        const validators = {
+            name: v => v.trim().length >= 2 || 'Please enter your name.',
+            email: v => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()) || 'Please enter a valid email address.',
+            phone: v => {
+                const digits = v.replace(/\D/g, '');
+                return (/^\+?[\d\s\-()]+$/.test(v.trim()) && digits.length >= 7 && digits.length <= 15) || 'Please enter a valid phone number.';
+            },
+            message: v => v.trim().length >= 10 || 'Please write a few more words (10+ characters).',
+        };
+
+        const setFieldError = (input, message, isHint = false) => {
+            const field = input.closest('.form-field');
+            const errorEl = field.querySelector('.form-error');
+            field.classList.toggle('has-error', Boolean(message) && !isHint);
+            errorEl.textContent = message || '';
+            errorEl.classList.toggle('is-hint', isHint);
+        };
+
+        const validateField = (input) => {
+            const check = validators[input.name];
+            if (!check) return true;
+            const result = check(input.value);
+            if (result !== true) {
+                setFieldError(input, result);
+                return false;
+            }
+            // Gentle nudge towards an official email, without blocking personal ones
+            const domain = input.name === 'email' ? input.value.trim().split('@')[1]?.toLowerCase() : '';
+            if (domain && freeEmailDomains.includes(domain)) {
+                setFieldError(input, 'Tip: an official / work email helps me reply faster.', true);
+            } else {
+                setFieldError(input, '');
+            }
+            return true;
+        };
+
+        contactForm.querySelectorAll('input[name], textarea[name]').forEach(input => {
+            if (!validators[input.name]) return;
+            input.addEventListener('blur', () => validateField(input));
+            input.addEventListener('input', () => {
+                if (input.closest('.form-field').classList.contains('has-error')) validateField(input);
+            });
+        });
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const inputs = [...contactForm.querySelectorAll('input[name], textarea[name]')].filter(i => validators[i.name]);
+            const allValid = inputs.map(validateField).every(Boolean);
+            if (!allValid) {
+                inputs.find(i => i.closest('.form-field').classList.contains('has-error'))?.focus();
+                return;
+            }
+
+            submitBtn.disabled = true;
+            btnLabel.textContent = 'Sending…';
+            statusEl.className = 'form-status';
+            statusEl.textContent = '';
+
+            try {
+                const response = await fetch(contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
+                    method: 'POST',
+                    headers: { 'Accept': 'application/json' },
+                    body: new FormData(contactForm),
+                });
+                const data = await response.json().catch(() => ({}));
+                if (!response.ok || String(data.success) === 'false') throw new Error(data.message || 'Request failed');
+                contactForm.reset();
+                inputs.forEach(i => setFieldError(i, ''));
+                statusEl.classList.add('success');
+                statusEl.textContent = 'Thanks! Your message is on its way — I’ll get back to you soon.';
+            } catch (err) {
+                statusEl.classList.add('error');
+                statusEl.textContent = 'Something went wrong. Please email me directly at abhijeetgorhe8@gmail.com.';
+            } finally {
+                submitBtn.disabled = false;
+                btnLabel.textContent = 'Send Message';
+            }
+        });
+    }
 
     // Theme Toggle Logic
     const themeBtn = document.getElementById('theme-toggle');

@@ -84,7 +84,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=3">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Sleek, artistic, and modern geometric fonts -->
@@ -267,7 +267,52 @@
         <section id="contact" class="contact section">
             <div class="section-header">
                 <h2>Stay in Touch.</h2>
+                <p>Tell me about your project and I’ll get back to you.</p>
             </div>
+
+            <form id="contact-form" class="contact-form" action="https://formsubmit.co/abhijeetgorhe8@gmail.com"
+                method="POST" novalidate>
+                <input type="hidden" name="_subject" value="New project enquiry from abhijeetgorhe.me">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="cf-name">Name</label>
+                        <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your full name"
+                            required minlength="2">
+                        <span class="form-error" aria-live="polite"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-email">Official email</label>
+                        <input id="cf-email" name="email" type="email" autocomplete="email"
+                            placeholder="you@yourcompany.com" required>
+                        <span class="form-error" aria-live="polite"></span>
+                    </div>
+                    <div class="form-field">
+                        <label for="cf-phone">Phone number</label>
+                        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210"
+                            required>
+                        <span class="form-error" aria-live="polite"></span>
+                    </div>
+                    <div class="form-field form-field-full">
+                        <label for="cf-message">Message</label>
+                        <textarea id="cf-message" name="message" rows="5"
+                            placeholder="What do you want to grow? Reels, animation, editing, design…" required
+                            minlength="10"></textarea>
+                        <span class="form-error" aria-live="polite"></span>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="artistic-btn primary form-submit">
+                        <span class="btn-label">Send Message</span>
+                    </button>
+                    <p class="form-status" role="status" aria-live="polite"></p>
+                </div>
+            </form>
+
             <div class="contact-links">
                 <a href="https://www.youtube.com/channel/UCvZVdH83B7q6wL3B8AlhRQQ" target="_blank" rel="noopener me" class="contact-item">
                     <span class="contact-label">YouTube</span>
@@ -293,7 +338,7 @@
         <p>©2026 Abhijeet Gorhe. All rights reserved.</p>
     </footer>
 
-    <script src="script.js?v=2"></script>
+    <script src="script.js?v=3"></script>
 </body>
 
 </html>
