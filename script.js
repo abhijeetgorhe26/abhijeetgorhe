@@ -1,4 +1,101 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const root = document.documentElement;
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // --- Scroll Reveal: tag content so it flows in as you scroll down ---
+    const revealGroups = [
+        ['.hero-content > *', 0.12],
+        ['.hero-visual', 0],
+        ['.section-header', 0],
+        ['.about-content > p', 0.12],
+        ['.slider-container', 0],
+        ['.proof-shot', 0],
+        ['.exp-block', 0.15],
+        ['.pro-list li', 0.06],
+        ['.contact-item', 0.12],
+        ['.footer', 0],
+    ];
+    revealGroups.forEach(([selector, stagger]) => {
+        document.querySelectorAll(selector).forEach((el, i) => {
+            el.classList.add('reveal');
+            el.style.setProperty('--d', `${(i % 8) * stagger}s`);
+        });
+    });
+    document.querySelectorAll('.hero-visual, .slider-container, .proof-shot')
+        .forEach(el => el.classList.add('reveal-scale'));
+
+    const startReveal = () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    };
+
+    // --- Intro Loader ---
+    const loader = document.getElementById('loader');
+    const loaderPct = document.getElementById('loader-pct');
+    const loaderBar = document.querySelector('.loader-bar span');
+
+    if (loader && !reduceMotion) {
+        root.classList.add('is-loading');
+        const started = performance.now();
+        const minTime = 1600;
+        const maxTime = 4000;
+        let progress = 0;
+        let pageReady = document.readyState === 'complete';
+        let finished = false;
+
+        window.addEventListener('load', () => { pageReady = true; });
+
+        const setProgress = (value) => {
+            progress = value;
+            if (loaderPct) loaderPct.textContent = Math.round(value);
+            if (loaderBar) loaderBar.style.setProperty('--progress', value / 100);
+        };
+
+        const finish = () => {
+            if (finished) return;
+            finished = true;
+            setProgress(100);
+            setTimeout(() => {
+                root.classList.add('loaded');
+                root.classList.remove('is-loading');
+                window.scrollTo(0, 0);
+                setTimeout(startReveal, 450);
+                setTimeout(() => root.classList.add('loader-gone'), 1300);
+            }, 250);
+        };
+
+        const tick = () => {
+            if (finished) return;
+            const elapsed = performance.now() - started;
+            const canFinish = (pageReady && elapsed >= minTime) || elapsed >= maxTime;
+            if (canFinish) return finish();
+            // Ease towards 90% while waiting, so the counter never stalls at 100
+            const target = Math.min(90, (elapsed / minTime) * 90);
+            setProgress(progress + (target - progress) * 0.15);
+            setTimeout(tick, 30);
+        };
+        tick();
+    } else {
+        root.classList.add('loaded', 'loader-gone');
+        startReveal();
+    }
+
+    // --- Scroll Progress Bar ---
+    const progressBar = document.querySelector('.scroll-progress');
+    const updateScrollProgress = () => {
+        const max = document.documentElement.scrollHeight - window.innerHeight;
+        if (progressBar) progressBar.style.setProperty('--scroll', max > 0 ? window.scrollY / max : 0);
+    };
+    window.addEventListener('scroll', updateScrollProgress, { passive: true });
+    updateScrollProgress();
+
     // Theme Toggle Logic
     const themeBtn = document.getElementById('theme-toggle');
     const iconSun = document.querySelector('.icon-sun');

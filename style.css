@@ -1417,3 +1417,223 @@ body.light-theme .profile-container::after {
         animation: none;
     }
 }
+
+/* =========================================================
+   Intro loader
+   ========================================================= */
+html:not(.js) .loader {
+    display: none;
+}
+
+html.is-loading,
+html.is-loading body {
+    overflow: hidden;
+}
+
+html.loaded .loader {
+    pointer-events: none;
+}
+
+.loader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: grid;
+    place-items: center;
+    background: var(--bg-dark);
+    transition: transform 1s cubic-bezier(0.76, 0, 0.24, 1) 0.15s;
+    /* Failsafe: never block the page if the script fails to run */
+    animation: loaderFailsafe 0.6s ease 6s forwards;
+}
+
+@keyframes loaderFailsafe {
+    to {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loader-curtain {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -12vh;
+    height: 12vh;
+    background: var(--accent-orange);
+    transform-origin: top;
+}
+
+.loader-inner {
+    width: min(560px, 86vw);
+    transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.loader-name {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.3em;
+    font-family: var(--font-display);
+    font-size: clamp(44px, 10vw, 96px);
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}
+
+.loader-word {
+    display: inline-block;
+    clip-path: inset(0 0 -10% 0);
+}
+
+.loader-word,
+.loader-word .did {
+    animation: loaderWordUp 0.9s cubic-bezier(0.25, 1, 0.5, 1) both;
+}
+
+.loader-word.accent {
+    color: var(--accent-orange);
+    animation-delay: 0.12s;
+}
+
+.loader-tagline {
+    margin-top: 18px;
+    font-size: 14px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    animation: loaderFade 0.8s ease 0.4s both;
+}
+
+.loader-bar {
+    position: relative;
+    height: 2px;
+    margin-top: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+}
+
+body.light-theme .loader-bar {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.loader-bar span {
+    position: absolute;
+    inset: 0;
+    background: var(--accent-orange);
+    box-shadow: 0 0 12px var(--accent-orange);
+    transform: scaleX(var(--progress, 0));
+    transform-origin: left;
+    transition: transform 0.25s ease-out;
+}
+
+.loader-count {
+    margin-top: 12px;
+    text-align: right;
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--text-secondary);
+    font-variant-numeric: tabular-nums;
+}
+
+/* Exit: content lifts away, then the whole screen rolls up like a curtain */
+html.loaded .loader-inner {
+    opacity: 0;
+    transform: translateY(-40px);
+}
+
+html.loaded .loader {
+    transform: translateY(-112vh);
+}
+
+html.loader-gone .loader {
+    display: none;
+}
+
+@keyframes loaderWordUp {
+    from {
+        transform: translateY(110%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes loaderFade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   Scroll progress bar
+   ========================================================= */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    z-index: 2000;
+    background: var(--accent-orange);
+    box-shadow: 0 0 10px var(--accent-orange);
+    transform: scaleX(var(--scroll, 0));
+    transform-origin: left;
+    pointer-events: none;
+}
+
+/* =========================================================
+   Scroll reveal: content flows in from below as you scroll
+   ========================================================= */
+.js .reveal {
+    opacity: 0;
+    transform: translateY(70px);
+    filter: blur(6px);
+    transition:
+        opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+        transform 0.9s cubic-bezier(0.25, 1, 0.5, 1),
+        filter 0.9s ease;
+    transition-delay: var(--d, 0s);
+}
+
+.js .reveal.reveal-scale {
+    transform: translateY(70px) scale(0.92);
+}
+
+.js .reveal.in-view {
+    opacity: 1;
+    transform: none;
+    filter: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .loader,
+    .loader-inner,
+    .loader-word,
+    .loader-tagline {
+        animation: none;
+        transition: none;
+    }
+
+    .js .reveal {
+        opacity: 1;
+        transform: none;
+        filter: none;
+        transition: none;
+    }
+}
+
+/* Name line inside the hero heading (keeps the name in the page's h1 for search) */
+.hero-name {
+    display: block;
+    margin-bottom: 14px;
+    font-size: clamp(16px, 0.28em, 24px);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
