@@ -301,15 +301,16 @@ p {
     box-shadow: 0 0 15px var(--accent-orange-dim);
 }
 
-text-decoration: none;
-color: var(--text-primary);
-border: 1px solid rgba(255, 255, 255, 0.2);
-padding: 12px 28px;
-border-radius: 40px;
-font-size: 15px;
-transition: all 0.3s ease;
-backdrop-filter: blur(12px);
--webkit-backdrop-filter: blur(12px);
+.hire-btn {
+    text-decoration: none;
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 28px;
+    border-radius: 40px;
+    font-size: 15px;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
 .hire-btn:hover {
