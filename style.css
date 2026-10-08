@@ -3394,3 +3394,21 @@ html.loaded .hb-pulse {
         text-align: center;
     }
 }
+
+/* Logo is a link back to the top of the page */
+a.logo {
+    color: var(--text-primary);
+    text-decoration: none;
+    cursor: pointer;
+    transition: opacity 0.2s ease;
+}
+
+a.logo:hover {
+    opacity: 0.85;
+}
+
+a.logo:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
