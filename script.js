@@ -4,14 +4,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Scroll Reveal: tag content so it flows in as you scroll down ---
     const revealGroups = [
-        ['.hero-content > *', 0.12],
-        ['.hero-visual', 0],
         ['.section-header', 0],
         ['.about-content > p', 0.12],
         ['.slider-container', 0],
         ['.proof-shot', 0],
-        ['.exp-block', 0.15],
-        ['.pro-list li', 0.06],
+        ['.stat', 0.1],
+        ['.process-steps li', 0.12],
+        ['.tl-item', 0.12],
+        ['.cred-card', 0.12],
+        ['.project-card', 0],
         ['.contact-form', 0],
         ['.contact-item', 0.12],
         ['.footer', 0],
@@ -34,8 +35,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        document.querySelectorAll('.reveal').forEach(el => {
+            // Anything already on screen (e.g. the hero) reveals right away
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight * 0.92 && rect.bottom > 0) {
+                el.classList.add('in-view');
+            } else {
+                observer.observe(el);
+            }
+        });
     };
+
+    // --- Hero brain-pop: plays once, then loops gently; tap/click replays ---
+    const brainPop = document.querySelector('.brain-pop');
+    const playBrainPop = () => {
+        if (!brainPop) return;
+        if (reduceMotion) {
+            brainPop.classList.add('is-static');
+            return;
+        }
+        brainPop.classList.remove('is-playing');
+        void brainPop.offsetWidth; // restart CSS animations
+        brainPop.classList.add('is-playing');
+    };
+    if (brainPop) brainPop.addEventListener('click', playBrainPop);
 
     // --- Intro Loader ---
     const loader = document.getElementById('loader');
@@ -68,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 root.classList.remove('is-loading');
                 window.scrollTo(0, 0);
                 setTimeout(startReveal, 450);
+                setTimeout(playBrainPop, 650);
                 setTimeout(() => root.classList.add('loader-gone'), 1300);
             }, 250);
         };
@@ -86,6 +110,36 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         root.classList.add('loaded', 'loader-gone');
         startReveal();
+        playBrainPop();
+    }
+
+    // --- Stats: count up when the strip comes into view ---
+    const countUp = (el) => {
+        const target = parseFloat(el.dataset.count);
+        const decimals = parseInt(el.dataset.decimals || '0', 10);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1400;
+        const start = performance.now();
+        const step = () => {
+            const t = Math.min(1, (performance.now() - start) / duration);
+            const eased = 1 - Math.pow(1 - t, 3);
+            el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
+            if (t < 1) setTimeout(step, 16);
+        };
+        step();
+    };
+    const statNums = document.querySelectorAll('.stat-num');
+    if (statNums.length && !reduceMotion) {
+        const statObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    countUp(entry.target);
+                    statObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.6 });
+        statNums.forEach(el => statObserver.observe(el));
     }
 
     // --- Scroll Progress Bar ---
@@ -226,8 +280,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Mobile Nav Pill Logic (Reference Design)
-    const sections = ['Home', 'About', 'Work', 'Experience', 'Contact'];
-    const sectionIds = ['home', 'about', 'portfolio', 'experience', 'contact'];
+    const sections = ['Home', 'About', 'Services', 'Process', 'Work', 'Proof', 'Experience', 'FAQ', 'Contact'];
+    const sectionIds = ['home', 'about', 'services', 'process', 'portfolio', 'proof', 'experience', 'faq', 'contact'];
     let currentIdx = 0;
     const sectionLabel = document.getElementById('current-section');
     const prevArrow = document.querySelector('.nav-arrow.prev');

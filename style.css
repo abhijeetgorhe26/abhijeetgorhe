@@ -1780,3 +1780,1563 @@ body.light-theme .form-field textarea {
         padding: 24px 18px;
     }
 }
+
+/* =========================================================
+   Hero: brain-pop animation (layers exported from Photoshop,
+   all 1000x1000 and aligned, so they stack with inset: 0)
+   ========================================================= */
+.hero-visual {
+    justify-content: center;
+}
+
+.brain-pop {
+    position: relative;
+    width: min(600px, 100%);
+    aspect-ratio: 1 / 1;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.bp-layer {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+.bp-doodles-left {
+    clip-path: inset(0 52% 0 0);
+}
+
+.bp-doodles-right {
+    clip-path: inset(0 0 0 48%);
+}
+
+/* Brain is only visible above the forehead cut line */
+.bp-brain-clip {
+    clip-path: polygon(0 0, 100% 0, 100% 28.2%, 0 56.9%);
+}
+
+.bp-lid {
+    transform-origin: 65.9% 38.1%;
+}
+
+.bp-hole {
+    transform-origin: 53.5% 41.5%;
+}
+
+.bp-brain-wrap {
+    transform-origin: 53.5% 41.5%;
+}
+
+.bp-sparks {
+    transform-origin: 57% 15%;
+}
+
+/* Waiting state (before the loader finishes) */
+.bp-hole,
+.bp-eyes,
+.bp-sparks,
+.bp-doodles {
+    opacity: 0;
+}
+
+.bp-brain-wrap {
+    transform: translateY(28%) scale(0.55);
+}
+
+/* Play once, then loop gently */
+.brain-pop.is-playing .bp-lid {
+    animation:
+        bpLidOpen 1.3s cubic-bezier(0.34, 1.3, 0.5, 1) 0.15s both,
+        bpLidBob 3.2s ease-in-out 1.5s infinite alternate;
+}
+
+.brain-pop.is-playing .bp-hole {
+    animation: bpHole 0.45s ease-out 0.45s both;
+}
+
+.brain-pop.is-playing .bp-brain-wrap {
+    animation:
+        bpBrainPop 0.95s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s both,
+        bpBrainFloat 3.6s ease-in-out 1.7s infinite alternate;
+}
+
+.brain-pop.is-playing .bp-eyes {
+    animation: bpFadeIn 0.25s ease-out 1.05s both;
+}
+
+.brain-pop.is-playing .bp-sparks {
+    animation:
+        bpSparksIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 1.35s both,
+        bpSparkPulse 1.1s ease-in-out 1.8s infinite alternate;
+}
+
+.brain-pop.is-playing .bp-doodles-left {
+    animation:
+        bpDoodleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.5s both,
+        bpFloatA 4.2s ease-in-out 2.1s infinite alternate;
+}
+
+.brain-pop.is-playing .bp-doodles-right {
+    animation:
+        bpDoodleIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.65s both,
+        bpFloatB 4.8s ease-in-out 2.25s infinite alternate;
+}
+
+/* Final pose without motion */
+.brain-pop.is-static .bp-lid {
+    transform: rotate(140deg);
+}
+
+.brain-pop.is-static .bp-brain-wrap {
+    transform: none;
+}
+
+.brain-pop.is-static .bp-hole,
+.brain-pop.is-static .bp-eyes,
+.brain-pop.is-static .bp-sparks,
+.brain-pop.is-static .bp-doodles {
+    opacity: 1;
+}
+
+@keyframes bpLidOpen {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    12% {
+        transform: translateY(-1.5%) rotate(-4deg);
+    }
+
+    100% {
+        transform: rotate(140deg);
+    }
+}
+
+@keyframes bpLidBob {
+    from {
+        transform: rotate(140deg);
+    }
+
+    to {
+        transform: rotate(133deg);
+    }
+}
+
+@keyframes bpHole {
+    from {
+        opacity: 0;
+        transform: scaleY(0.2);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+@keyframes bpBrainPop {
+    from {
+        transform: translateY(28%) scale(0.55);
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes bpBrainFloat {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-2.2%);
+    }
+}
+
+@keyframes bpFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes bpSparksIn {
+    from {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bpSparkPulse {
+    from {
+        opacity: 0.55;
+        transform: scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+}
+
+@keyframes bpDoodleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.75) translateY(4%);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes bpFloatA {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    to {
+        transform: translate(-1%, -1.6%) rotate(-1.5deg);
+    }
+}
+
+@keyframes bpFloatB {
+    from {
+        transform: translate(0, 0) rotate(0deg);
+    }
+
+    to {
+        transform: translate(1%, -1.4%) rotate(1.5deg);
+    }
+}
+
+/* =========================================================
+   Hero text extras
+   ========================================================= */
+.hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+    margin: -10px 0 26px;
+}
+
+.hero-tags li {
+    padding: 6px 14px;
+    font-size: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 30px;
+    color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.hero-tags em {
+    font-style: normal;
+    color: var(--accent-orange);
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.artistic-btn.ghost {
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.artistic-btn.ghost:hover {
+    border-color: var(--accent-orange);
+    color: var(--accent-orange);
+    transform: translateY(-3px);
+}
+
+.artistic-btn.ghost::after {
+    display: none;
+}
+
+body.light-theme .hero-tags li,
+body.light-theme .artistic-btn.ghost {
+    border-color: rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================================
+   Services + tools
+   ========================================================= */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.service-card {
+    position: relative;
+    padding: 34px 30px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.02);
+    transition: border-color 0.3s ease, transform 0.3s ease, background 0.3s ease;
+}
+
+.service-card:hover {
+    border-color: var(--accent-orange);
+    background: rgba(255, 85, 0, 0.04);
+    transform: translateY(-4px);
+}
+
+.service-num {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--accent-orange);
+    letter-spacing: 0.1em;
+}
+
+.service-card h3 {
+    margin: 10px 0 10px;
+    font-family: var(--font-display);
+    font-size: 24px;
+}
+
+.service-card p {
+    color: var(--text-secondary);
+    font-size: 17px;
+}
+
+.service-card em {
+    font-style: normal;
+    color: var(--accent-orange);
+}
+
+.tools-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 40px;
+}
+
+.tools-label {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
+.tools-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style: none;
+}
+
+.tools-list li {
+    padding: 8px 16px;
+    font-size: 15px;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+body.light-theme .service-card,
+body.light-theme .tools-list li {
+    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+/* =========================================================
+   Work: "projects coming soon" card
+   ========================================================= */
+.video-hd-wrapper.coming-soon {
+    display: grid;
+    place-items: center;
+    background:
+        radial-gradient(circle at 30% 20%, rgba(255, 85, 0, 0.25), transparent 55%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 12px, transparent 12px 24px),
+        #0d0d0d;
+}
+
+.coming-inner {
+    padding: 24px;
+    text-align: center;
+}
+
+.coming-icon {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 700;
+    color: var(--accent-orange);
+}
+
+.coming-inner h4 {
+    margin: 12px 0 8px;
+    font-family: var(--font-display);
+    font-size: 26px;
+}
+
+.coming-inner p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.coming-link {
+    display: inline-block;
+    margin-top: 18px;
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq-list {
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.faq-item {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+}
+
+.faq-item summary {
+    position: relative;
+    padding: 20px 56px 20px 24px;
+    font-family: var(--font-display);
+    font-size: 19px;
+    cursor: pointer;
+    list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary::after {
+    content: "+";
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: var(--accent-orange);
+    transition: transform 0.3s ease;
+}
+
+.faq-item[open] summary::after {
+    transform: translateY(-50%) rotate(45deg);
+}
+
+.faq-item p {
+    padding: 0 24px 22px;
+    color: var(--text-secondary);
+}
+
+.faq-item a {
+    color: var(--accent-orange);
+}
+
+body.light-theme .faq-item {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   Responsive alignment
+   ========================================================= */
+section[id] {
+    scroll-margin-top: 90px;
+}
+
+@media (max-width: 1024px) {
+    .hero-tags {
+        justify-content: center;
+    }
+
+    .hero-visual {
+        width: 100%;
+        margin-top: 30px;
+    }
+
+    .brain-pop {
+        width: min(520px, 100%);
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+
+    /* Header: one compact bar (logo + actions) with the section pill beneath */
+    .header {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas:
+            "logo actions"
+            "pill pill";
+        row-gap: 8px;
+        padding: 10px 16px;
+        background: rgba(7, 7, 7, 0.88);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    body.light-theme .header {
+        background: rgba(248, 250, 252, 0.92);
+        border-bottom-color: rgba(0, 0, 0, 0.06);
+    }
+
+    .logo {
+        grid-area: logo;
+        font-size: 18px;
+    }
+
+    .header-actions {
+        grid-area: actions;
+    }
+
+    .mobile-nav-pill {
+        grid-area: pill;
+        justify-self: center;
+        max-width: 170px;
+        height: 32px;
+    }
+
+    .hero.section {
+        padding-top: 130px !important;
+        min-height: auto;
+    }
+
+    section[id] {
+        scroll-margin-top: 110px;
+    }
+
+    .section {
+        padding: 56px 16px;
+    }
+
+    .hero-title {
+        font-size: clamp(30px, 8.5vw, 40px);
+        letter-spacing: -1px;
+    }
+
+    .hero-name {
+        margin-bottom: 10px;
+    }
+
+    .hero-tags li {
+        font-size: 13px;
+        padding: 5px 12px;
+    }
+
+    .hero-actions .artistic-btn {
+        padding: 14px 26px;
+    }
+
+    .brain-pop {
+        width: min(420px, 100%);
+    }
+
+    .about-content .large-text {
+        font-size: 22px;
+    }
+
+    .services-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .service-card {
+        padding: 24px 20px;
+    }
+
+    .service-card h3 {
+        font-size: 21px;
+    }
+
+    .tools-row {
+        justify-content: center;
+    }
+
+    .tools-list {
+        justify-content: center;
+    }
+
+    .tools-list li {
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .faq-item summary {
+        font-size: 16px;
+        padding: 16px 48px 16px 18px;
+    }
+
+    .faq-item p {
+        padding: 0 18px 18px;
+        font-size: 15px;
+    }
+
+    .contact-form {
+        margin-bottom: 40px;
+    }
+}
+
+@media (max-width: 380px) {
+    .logo {
+        font-size: 15px;
+    }
+
+    .hire-pill-btn {
+        padding: 6px 12px;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .brain-pop.is-playing .bp-layer {
+        animation: none !important;
+    }
+}
+
+.tools-row-dev {
+    margin-top: 16px;
+}
+
+/* Balanced hero columns for the longer title + square animation */
+.hero {
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1 1 55%;
+    min-width: 0;
+}
+
+.hero-visual {
+    flex: 1 1 45%;
+    min-width: 0;
+}
+
+.hero-title {
+    font-size: clamp(44px, 5vw, 72px);
+}
+
+@media (max-width: 1024px) {
+    .hero-content,
+    .hero-visual {
+        flex: none;
+        width: 100%;
+    }
+
+    .hero-title {
+        font-size: clamp(36px, 7vw, 56px);
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: clamp(30px, 8.5vw, 40px);
+    }
+}
+
+/* Soft fade where the photo is cropped at the bottom */
+.brain-pop {
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+    .logo {
+        line-height: 1;
+    }
+
+    .logo .did {
+        font-size: 1.6em;
+        line-height: 0;
+    }
+
+    .hero.section {
+        padding-top: 118px !important;
+    }
+}
+
+/* Never let decorative overflow (rotated lid canvas, off-screen slides,
+   pulsing grid) widen the page on phones */
+html,
+body {
+    overflow-x: hidden;
+    overflow-x: clip;
+}
+
+.hero,
+.portfolio {
+    overflow-x: clip;
+}
+
+/* Phones: let video cards shrink so their titles stay inside the slider */
+@media (max-width: 768px) {
+    .video-hd-wrapper {
+        min-height: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-wrapper {
+        min-height: 0;
+        height: calc(50vh + 120px);
+    }
+}
+
+@media (max-width: 480px) {
+    .slider-wrapper {
+        height: calc(40vh + 120px);
+    }
+}
+
+/* =========================================================
+   Creativity: thought trail -> light bulb switches on ->
+   skill "ideas" burst out of the brain, then loop gently
+   ========================================================= */
+.brain-pop {
+    --bp-w: min(600px, 100%);
+    width: var(--bp-w);
+    margin-top: calc(var(--bp-w) * 0.2);
+    -webkit-mask-image: none;
+    mask-image: none;
+}
+
+.bp-body {
+    -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 82%, transparent 100%);
+}
+
+@media (max-width: 1024px) {
+    .brain-pop {
+        --bp-w: min(520px, 100%);
+    }
+}
+
+@media (max-width: 768px) {
+    .brain-pop {
+        --bp-w: min(420px, 100%);
+    }
+}
+
+.bp-ideas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+
+/* thought trail from brain to bulb */
+.bp-trail i {
+    position: absolute;
+    width: 1.6%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(255, 213, 74, 0.9);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+}
+
+.bp-trail i:nth-child(1) { left: 54.5%; top: 2.5%; }
+.bp-trail i:nth-child(2) { left: 57.5%; top: -0.5%; width: 1.3%; }
+.bp-trail i:nth-child(3) { left: 55.5%; top: -3%; width: 1%; }
+
+/* bulb */
+.bp-bulb {
+    position: absolute;
+    left: 57%;
+    top: -14%;
+    width: 12.5%;
+    aspect-ratio: 64 / 96;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+}
+
+.bp-bulb-svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.6));
+}
+
+.bulb-on {
+    opacity: 0;
+}
+
+.bp-bulb-glow {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 360%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(255, 213, 74, 0.55) 0%, rgba(255, 140, 0, 0.22) 35%, transparent 68%);
+    opacity: 0;
+}
+
+.bp-rays {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 230%;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%) scale(0.6);
+    overflow: visible;
+    opacity: 0;
+    stroke: #ffd54a;
+    stroke-width: 5;
+    stroke-linecap: round;
+}
+
+.bp-burst i {
+    position: absolute;
+    left: 50%;
+    top: 30%;
+    width: 9%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: #ffe27a;
+    box-shadow: 0 0 8px #ffb300;
+    opacity: 0;
+    --a: 0deg;
+}
+
+.bp-burst i:nth-child(1) { --a: 0deg; }
+.bp-burst i:nth-child(2) { --a: 36deg; }
+.bp-burst i:nth-child(3) { --a: 72deg; }
+.bp-burst i:nth-child(4) { --a: 108deg; }
+.bp-burst i:nth-child(5) { --a: 144deg; }
+.bp-burst i:nth-child(6) { --a: 180deg; }
+.bp-burst i:nth-child(7) { --a: 216deg; }
+.bp-burst i:nth-child(8) { --a: 252deg; }
+.bp-burst i:nth-child(9) { --a: 288deg; }
+.bp-burst i:nth-child(10) { --a: 324deg; }
+
+/* skill ideas */
+.bp-idea {
+    position: absolute;
+    left: calc(var(--x) * 1%);
+    top: calc(var(--y) * 1%);
+    width: 9.5%;
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: #fff;
+    color: #111;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.55), 0 8px 22px rgba(255, 85, 0, 0.35);
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(calc(var(--dx) * 100%), calc(var(--dy) * 100%)) scale(0.2);
+}
+
+.bp-idea svg {
+    width: 58%;
+    height: 58%;
+}
+
+.bp-idea-accent {
+    background: var(--accent-orange);
+    color: #fff;
+    border-color: #fff;
+}
+
+/* ---- timeline ---- */
+.brain-pop.is-playing .bp-trail i {
+    animation:
+        bpTrailIn 0.3s ease-out calc(1.65s + var(--t, 0s)) both,
+        bpTwinkle 1.4s ease-in-out calc(2.2s + var(--t, 0s)) infinite alternate;
+}
+
+.bp-trail i:nth-child(2) { --t: 0.12s; }
+.bp-trail i:nth-child(3) { --t: 0.24s; }
+
+.brain-pop.is-playing .bp-bulb {
+    animation:
+        bpBulbIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 1.95s both,
+        bpBulbBob 3s ease-in-out 3.3s infinite alternate;
+}
+
+.brain-pop.is-playing .bulb-on {
+    animation: bpFlicker 0.65s linear 2.4s both;
+}
+
+.brain-pop.is-playing .bp-bulb-glow {
+    animation:
+        bpFadeIn 0.4s ease-out 2.85s both,
+        bpGlowPulse 2.2s ease-in-out 3.3s infinite alternate;
+}
+
+.brain-pop.is-playing .bp-rays {
+    animation:
+        bpRaysIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) 2.85s both,
+        bpRaysSpin 14s linear 3.3s infinite;
+}
+
+.brain-pop.is-playing .bp-burst i {
+    animation: bpBurst 3.6s ease-out 2.9s infinite;
+}
+
+.brain-pop.is-playing .bp-idea {
+    animation:
+        bpIdeaOut 0.75s cubic-bezier(0.34, 1.45, 0.64, 1) calc(3s + var(--i) * 0.13s) both,
+        bpIdeaFloat 3.2s ease-in-out calc(3.9s + var(--i) * 0.25s) infinite alternate;
+}
+
+/* final pose without motion */
+.brain-pop.is-static .bp-trail i,
+.brain-pop.is-static .bp-bulb,
+.brain-pop.is-static .bulb-on,
+.brain-pop.is-static .bp-bulb-glow,
+.brain-pop.is-static .bp-idea {
+    opacity: 1;
+}
+
+.brain-pop.is-static .bp-rays {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+}
+
+.brain-pop.is-static .bp-idea {
+    transform: translate(-50%, -50%);
+}
+
+@keyframes bpTrailIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes bpTwinkle {
+    from { opacity: 1; }
+    to { opacity: 0.35; }
+}
+
+@keyframes bpBulbIn {
+    from { opacity: 0; transform: translate(-50%, -20%) scale(0.3); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes bpBulbBob {
+    from { transform: translate(-50%, -50%) rotate(-3deg); }
+    to { transform: translate(-50%, -58%) rotate(3deg); }
+}
+
+@keyframes bpFlicker {
+    0% { opacity: 0; }
+    12% { opacity: 1; }
+    22% { opacity: 0.15; }
+    38% { opacity: 1; }
+    48% { opacity: 0.3; }
+    62% { opacity: 1; }
+    100% { opacity: 1; }
+}
+
+@keyframes bpGlowPulse {
+    from { opacity: 0.75; transform: translate(-50%, -50%) scale(0.95); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+
+@keyframes bpRaysIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes bpRaysSpin {
+    from { transform: translate(-50%, -50%) rotate(0deg); }
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+@keyframes bpBurst {
+    0% { opacity: 1; transform: translate(-50%, -50%) rotate(var(--a)) translateY(0) scale(1); }
+    22% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--a)) translateY(-900%) scale(0.4); }
+    100% { opacity: 0; transform: translate(-50%, -50%) rotate(var(--a)) translateY(-900%) scale(0.4); }
+}
+
+@keyframes bpIdeaOut {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) translate(calc(var(--dx) * 100%), calc(var(--dy) * 100%)) scale(0.2) rotate(-90deg);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+}
+
+@keyframes bpIdeaFloat {
+    from { transform: translate(-50%, -50%) rotate(-5deg); }
+    to { transform: translate(-50%, -62%) rotate(5deg); }
+}
+
+/* =========================================================
+   Stats strip (real numbers from the YouTube proof)
+   ========================================================= */
+.stats-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 8vw;
+    gap: 1px;
+}
+
+.stat {
+    padding: 34px 20px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat + .stat {
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.stat-num {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(34px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--accent-orange);
+    font-variant-numeric: tabular-nums;
+    line-height: 1.1;
+}
+
+.stat-label {
+    display: block;
+    margin-top: 6px;
+    font-size: 15px;
+    color: var(--text-secondary);
+}
+
+body.light-theme .stat {
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* =========================================================
+   How I work
+   ========================================================= */
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    list-style: none;
+    counter-reset: none;
+}
+
+.process-steps li {
+    position: relative;
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.process-steps li:not(:last-child)::after {
+    content: "→";
+    position: absolute;
+    right: -19px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--accent-orange);
+    font-size: 20px;
+}
+
+.step-num {
+    font-family: var(--font-display);
+    font-size: 40px;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1.5px var(--accent-orange);
+}
+
+.process-steps h3 {
+    margin: 6px 0 8px;
+    font-family: var(--font-display);
+    font-size: 22px;
+}
+
+.process-steps p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+body.light-theme .process-steps li {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-steps li::after {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .stats-strip {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 16px;
+    }
+
+    .stat {
+        padding: 22px 10px;
+    }
+
+    .stat:nth-child(3) {
+        border-left: none;
+    }
+
+    .stat:nth-child(n+3) {
+        border-top: none;
+    }
+
+    .stat-label {
+        font-size: 13px;
+    }
+
+    .process-steps {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+}
+
+/* =========================================================
+   Experience timeline, credentials and projects
+   ========================================================= */
+.timeline {
+    position: relative;
+    list-style: none;
+    max-width: 1000px;
+    margin-bottom: 60px;
+}
+
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 200px;
+    top: 8px;
+    bottom: 8px;
+    width: 1px;
+    background: linear-gradient(var(--accent-orange), rgba(255, 85, 0, 0.1));
+}
+
+.tl-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 40px;
+    padding-bottom: 44px;
+}
+
+.tl-item::before {
+    content: "";
+    position: absolute;
+    left: 194px;
+    top: 8px;
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: var(--bg-dark);
+    border: 2px solid var(--accent-orange);
+    box-shadow: 0 0 12px var(--accent-orange-dim);
+}
+
+.tl-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.tl-date {
+    font-family: var(--font-display);
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.tl-place {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.tl-body h3 {
+    font-family: var(--font-display);
+    font-size: 24px;
+    line-height: 1.25;
+}
+
+.tl-org {
+    display: inline-block;
+    margin: 4px 0 10px;
+    color: var(--accent-orange);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.tl-org:hover {
+    text-decoration: underline;
+}
+
+.tl-body p,
+.project-card p,
+.cred-card p {
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.tl-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    list-style: none;
+}
+
+.tl-tags li {
+    padding: 4px 12px;
+    font-size: 13px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 85, 0, 0.35);
+    color: var(--text-primary);
+    background: rgba(255, 85, 0, 0.06);
+}
+
+.cred-kicker {
+    display: inline-block;
+    font-family: var(--font-display);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+}
+
+.cred-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 24px;
+}
+
+.cred-card,
+.project-card {
+    padding: 28px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cert-card {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 24px;
+    align-items: center;
+}
+
+.cert-thumb {
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-thumb:hover {
+    transform: translateY(-3px) rotate(-1deg);
+    box-shadow: 0 14px 34px rgba(255, 85, 0, 0.25);
+}
+
+.cert-thumb img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.cred-card h3,
+.project-card h3 {
+    margin: 6px 0 6px;
+    font-family: var(--font-display);
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.cred-meta {
+    margin-top: 8px;
+    font-size: 14px !important;
+    opacity: 0.85;
+}
+
+.edu-list {
+    list-style: none;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.edu-list strong {
+    display: block;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 17px;
+}
+
+.edu-list span {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.project-list {
+    max-width: 900px;
+    margin: 60px auto 0;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 16px;
+    color: var(--accent-orange);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.card-link:hover {
+    text-decoration: underline;
+}
+
+body.light-theme .cred-card,
+body.light-theme .project-card {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 1024px) {
+    .cred-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .timeline::before {
+        left: 6px;
+    }
+
+    .tl-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding-left: 30px;
+        padding-bottom: 34px;
+    }
+
+    .tl-item::before {
+        left: 0;
+        top: 4px;
+    }
+
+    .tl-meta {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 4px 12px;
+        text-align: left;
+        padding-right: 0;
+    }
+
+    .tl-body h3 {
+        font-size: 20px;
+    }
+
+    .cert-card {
+        grid-template-columns: 1fr;
+    }
+
+    .cred-card,
+    .project-card {
+        padding: 22px 18px;
+    }
+
+    .project-list {
+        margin-top: 40px;
+    }
+}
+
+/* =========================================================
+   Loader v2: heartbeat over frosted glass. The page waits
+   blurred behind it, then comes into focus on the last beat.
+   ========================================================= */
+.loader {
+    background: rgba(7, 7, 7, 0.55);
+    -webkit-backdrop-filter: blur(18px) saturate(1.15);
+    backdrop-filter: blur(18px) saturate(1.15);
+    transition:
+        opacity 0.9s ease 0.25s,
+        -webkit-backdrop-filter 1.1s ease 0.15s,
+        backdrop-filter 1.1s ease 0.15s;
+}
+
+body.light-theme .loader {
+    background: rgba(248, 250, 252, 0.55);
+}
+
+.loader-curtain {
+    display: none;
+}
+
+.loader-inner {
+    text-align: center;
+}
+
+.loader-name {
+    justify-content: center;
+    animation: heartbeat 1.15s ease-in-out infinite;
+}
+
+.loader-word,
+.loader-word .did {
+    animation: none;
+}
+
+.loader-tagline {
+    animation: loaderFade 0.8s ease 0.3s both;
+}
+
+.loader-count {
+    text-align: center;
+    margin-top: 6px;
+    font-size: 15px;
+    letter-spacing: 0.15em;
+    animation: heartbeat 1.15s ease-in-out infinite;
+}
+
+.loader-heartbeat {
+    display: block;
+    width: 100%;
+    height: 70px;
+    margin-top: 26px;
+    overflow: visible;
+}
+
+.loader-heartbeat path {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    vector-effect: non-scaling-stroke;
+}
+
+.hb-track {
+    stroke: rgba(255, 255, 255, 0.12);
+    stroke-width: 2;
+}
+
+body.light-theme .hb-track {
+    stroke: rgba(0, 0, 0, 0.12);
+}
+
+.hb-pulse {
+    stroke: var(--accent-orange);
+    stroke-width: 3;
+    stroke-dasharray: 170 830;
+    stroke-dashoffset: 1000;
+    filter: drop-shadow(0 0 6px var(--accent-orange)) drop-shadow(0 0 14px rgba(255, 85, 0, 0.6));
+    animation: hbSweep 1.15s linear infinite;
+}
+
+/* lub-dub: opacity 0 -> 100 -> 60 -> 100 -> rest */
+@keyframes heartbeat {
+    0% {
+        opacity: 0.25;
+        transform: scale(0.98);
+    }
+
+    14% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+
+    28% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+
+    42% {
+        opacity: 1;
+        transform: scale(1.04);
+    }
+
+    70% {
+        opacity: 0.4;
+        transform: scale(0.99);
+    }
+
+    100% {
+        opacity: 0.25;
+        transform: scale(0.98);
+    }
+}
+
+@keyframes hbSweep {
+    from {
+        stroke-dashoffset: 1000;
+    }
+
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* Exit: one strong final beat, then the blur dissolves */
+html.loaded .loader {
+    transform: none;
+    opacity: 0;
+    -webkit-backdrop-filter: blur(0px) saturate(1);
+    backdrop-filter: blur(0px) saturate(1);
+    pointer-events: none;
+}
+
+html.loaded .loader-inner {
+    opacity: 0;
+    transform: scale(1.12);
+    transition: opacity 0.5s ease 0.2s, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html.loaded .loader-name,
+html.loaded .loader-count,
+html.loaded .hb-pulse {
+    animation: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .loader-name,
+    .loader-count,
+    .hb-pulse {
+        animation: none;
+    }
+}

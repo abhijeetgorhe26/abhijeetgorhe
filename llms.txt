@@ -1,0 +1,32 @@
+# Abhijeet Gorhe
+
+> Abhijeet Gorhe (Abhijeet Sanjay Gorhe / Abhijeet Rajshree Sanjay Gorhe) is a Computer Science Engineer, full stack developer and video editor from Malegaon, Nashik district, Maharashtra, India. He offers video editing, motion graphics, graphic & web design, software/AI architecture diagrams and AI automation (learning) for YouTubers, creators and local businesses in Nashik, Malegaon and online.
+
+## About
+- Location: Malegaon, Nashik district, Maharashtra, India. Serves Nashik city and Malegaon in person, and clients worldwide remotely.
+- Education: B.Tech in Computer Science, Walchand College of Engineering, Sangli (batch 2022–2026).
+- Experience:
+  - Full Stack Web Developer Intern, 10xTech (Mumbai), Jul 2026 – present: React.js, TypeScript, Node.js, Express.js, MySQL, Sequelize, Docker.
+  - Web Designer, Rotaract Club of WCE (Sangli), Dec 2022 – Aug 2023: Figma, Adobe XD, Photoshop.
+  - Content creator and video editor for 2 years; grew his own YouTube channel to 40.7K views and +750 subscribers in 40 days.
+- Certification: Java with Full Stack Web Development — SevenMentor Pvt. Ltd. (with Spoken Tutorial, IIT Bombay), issued Jul 2026, ID SM-2026-2N7SX8.
+- Project: Digital Payment Management Web App — Node.js, Express.js, React.js, PostgreSQL, MongoDB, JWT.
+- Contact: abhijeetgorhe8@gmail.com or the form at https://abhijeetgorhe.me/#contact
+
+## Services
+- Video editing: YouTube videos, Reels, Shorts
+- Motion graphics and explainer videos
+- Graphic design: thumbnails, posters, social media creatives
+- Web design and full-stack web app development (React, Next.js, Node.js)
+- Software and AI system architecture diagrams
+- AI automation, chatbots and AI visuals (learning, small projects)
+
+## Tools
+Creative: Premiere Pro, After Effects, Photoshop, Illustrator, Figma, ChatGPT, Claude, n8n, Adobe Firefly
+Dev stack: Java, JavaScript, TypeScript, React.js, Next.js, Angular, Node.js, Express.js, MongoDB, PostgreSQL, MySQL, Docker, Kubernetes, GitHub, WebRTC, Web3
+
+## Links
+- Website: https://abhijeetgorhe.me/
+- LinkedIn: https://www.linkedin.com/in/abhijeet-gorhe-383794254/
+- YouTube: https://www.youtube.com/@abhijeetgorhe
+- GitHub: https://github.com/abhijeetgorhe26
