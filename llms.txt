@@ -9,7 +9,10 @@
   - Full Stack Web Developer Intern, 10xTech (Mumbai), Jul 2026 – present: React.js, TypeScript, Node.js, Express.js, MySQL, Sequelize, Docker.
   - Web Designer, Rotaract Club of WCE (Sangli), Dec 2022 – Aug 2023: Figma, Adobe XD, Photoshop.
   - Content creator and video editor for 2 years; grew his own YouTube channel to 40.7K views and +750 subscribers in 40 days.
-- Certification: Java with Full Stack Web Development — SevenMentor Pvt. Ltd. (with Spoken Tutorial, IIT Bombay), issued Jul 2026, ID SM-2026-2N7SX8.
+- Certifications:
+  - AI Foundations — OpenAI Academy, issued Jun 24, 2026, ID shq5gpjncf (verify: https://academy.openai.com/public/certificate/shq5gpjncf)
+  - 0-100 Full Stack Web Development Course — 100xdevs (Harkirat Singh), completed Jun 22, 2026, No. XKOUG16P
+  - Java with Full Stack Web Development — SevenMentor Pvt. Ltd. (with Spoken Tutorial, IIT Bombay), issued Jul 2026, ID SM-2026-2N7SX8
 - Project: Digital Payment Management Web App — Node.js, Express.js, React.js, PostgreSQL, MongoDB, JWT.
 - Contact: abhijeetgorhe8@gmail.com or the form at https://abhijeetgorhe.me/#contact
 

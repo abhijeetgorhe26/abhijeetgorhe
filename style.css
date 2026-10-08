@@ -3340,3 +3340,56 @@ html.loaded .hb-pulse {
         animation: none;
     }
 }
+
+/* Certifications row + education */
+.sub-heading {
+    margin: 10px 0 22px;
+    font-family: var(--font-display);
+    font-size: 28px;
+}
+
+.cert-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+.cert-grid .cert-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+}
+
+.cert-grid .cert-thumb {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.cert-grid .card-link {
+    margin-top: auto;
+    padding-top: 14px;
+}
+
+.edu-wrap {
+    max-width: 900px;
+}
+
+@media (max-width: 1024px) {
+    .cert-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .cert-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .sub-heading {
+        font-size: 24px;
+        text-align: center;
+    }
+}
