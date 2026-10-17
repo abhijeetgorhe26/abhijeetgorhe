@@ -668,6 +668,21 @@ p {
     font-family: var(--font-display);
 }
 
+.slide-desc {
+    margin: 6px 0 0;
+    font-size: 15px;
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 768px) {
+    .slide-desc {
+        display: none;
+    }
+}
+
 .category-tag {
     display: inline-block;
     font-size: 13px;
@@ -2162,47 +2177,263 @@ body.light-theme .tools-list li {
 }
 
 /* =========================================================
-   Work: "projects coming soon" card
+   Work: category tabs, project grids, "coming soon" cards
    ========================================================= */
-.video-hd-wrapper.coming-soon {
+.work-tabs {
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    max-width: 900px;
+    margin: 0 auto 50px;
+    padding: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.work-tab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 10px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.2;
+    cursor: pointer;
+    transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.work-tab svg {
+    flex: none;
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.work-tab:hover {
+    color: var(--text-primary);
+}
+
+.work-tab[aria-selected="true"] {
+    color: #fff;
+    background: var(--accent-orange);
+    box-shadow: 0 6px 20px rgba(255, 85, 0, 0.35);
+}
+
+.work-tab:focus-visible {
+    outline: 2px solid var(--accent-orange);
+    outline-offset: 2px;
+}
+
+.work-panel:focus-visible {
+    outline: none;
+}
+
+.work-panel:not([hidden]) {
+    animation: work-panel-in 0.4s ease both;
+}
+
+@keyframes work-panel-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: none; }
+}
+
+.soon-card {
+    position: relative;
+    overflow: hidden;
+    padding: 28px;
+    border: 1px dashed rgba(255, 85, 0, 0.45);
+    border-radius: 18px;
     background:
-        radial-gradient(circle at 30% 20%, rgba(255, 85, 0, 0.25), transparent 55%),
-        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.03) 0 12px, transparent 12px 24px),
-        #0d0d0d;
+        radial-gradient(circle at 100% 0%, rgba(255, 85, 0, 0.18), transparent 55%),
+        repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.025) 0 12px, transparent 12px 24px),
+        rgba(255, 255, 255, 0.02);
 }
 
-.coming-inner {
-    padding: 24px;
-    text-align: center;
-}
-
-.coming-icon {
-    display: inline-block;
+.soon-card h3 {
+    margin: 6px 0;
     font-family: var(--font-display);
-    font-size: 48px;
-    font-weight: 700;
-    color: var(--accent-orange);
+    font-size: 22px;
+    line-height: 1.3;
 }
 
-.coming-inner h4 {
-    margin: 12px 0 8px;
-    font-family: var(--font-display);
-    font-size: 26px;
-}
-
-.coming-inner p {
+.soon-card p {
     color: var(--text-secondary);
     font-size: 16px;
 }
 
-.coming-link {
-    display: inline-block;
-    margin-top: 18px;
+.soon-steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 18px 0 0;
+    padding: 0;
+    list-style: none;
+    font-size: 13px;
+}
+
+.soon-steps li {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    color: var(--text-secondary);
+}
+
+.soon-steps li::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: 1.5px solid currentColor;
+}
+
+.soon-steps li.done {
+    color: var(--text-primary);
+    border-color: rgba(255, 85, 0, 0.35);
+}
+
+.soon-steps li.done::before {
+    background: var(--accent-orange);
+    border-color: var(--accent-orange);
+}
+
+.soon-steps li.current {
     color: var(--accent-orange);
-    text-decoration: none;
+    border-color: var(--accent-orange);
+}
+
+.soon-steps li.current::before {
+    animation: soon-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes soon-pulse {
+    50% { background: currentColor; opacity: 0.4; }
+}
+
+.soon-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 20px;
+    margin-top: 22px;
+}
+
+.soon-actions .card-link {
+    margin: 0;
+}
+
+.soon-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 999px;
+    background: var(--accent-orange);
+    color: #fff;
     font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.soon-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(255, 85, 0, 0.35);
+}
+
+/* Sliders for cards and banners: sized to the tallest slide (set by script.js) */
+.slider-container.fit .slider-wrapper {
+    height: calc(var(--slide-h, 480px) + 40px);
+    min-height: 0;
+}
+
+.slider-container.fit .slide-item {
+    height: auto;
+}
+
+.slider-container.fit .slide-item > article {
+    min-height: var(--slide-h, 0px);
+    /* Solid so the cards stacked behind don't show through */
+    background-color: var(--bg-dark);
+}
+
+.slider-container.fit .slide-details h3 {
+    font-size: 28px;
+}
+
+.slide-item .project-card .card-link {
+    margin-right: 18px;
+}
+
+.slider-btn[hidden] {
+    display: none;
+}
+
+.design-frame {
+    display: block;
+    overflow: hidden;
+    background: #000;
+    border: 1px solid rgba(255, 85, 0, 0.4);
+    border-radius: 12px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
+}
+
+.design-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+body.light-theme .work-tabs,
+body.light-theme .soon-steps li {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+body.light-theme .soon-card {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+@media (max-width: 768px) {
+    .slider-container.fit .slide-details h3 {
+        font-size: 20px;
+    }
+
+    .work-tabs {
+        gap: 4px;
+        padding: 4px;
+        margin-bottom: 36px;
+        border-radius: 18px;
+    }
+
+    .work-tab {
+        flex-direction: column;
+        gap: 4px;
+        padding: 10px 4px;
+        border-radius: 14px;
+        font-size: 12px;
+    }
+
+    .soon-card {
+        padding: 22px 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .work-panel:not([hidden]),
+    .soon-steps li.current::before {
+        animation: none;
+    }
 }
 
 /* =========================================================
@@ -3117,11 +3348,6 @@ body.light-theme .process-steps li {
     color: var(--text-secondary);
 }
 
-.project-list {
-    max-width: 900px;
-    margin: 60px auto 0;
-}
-
 .card-link {
     display: inline-block;
     margin-top: 16px;
@@ -3181,10 +3407,6 @@ body.light-theme .project-card {
     .cred-card,
     .project-card {
         padding: 22px 18px;
-    }
-
-    .project-list {
-        margin-top: 40px;
     }
 }
 

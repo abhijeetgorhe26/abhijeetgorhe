@@ -369,7 +369,7 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=17">
+    <link rel="stylesheet" href="style.css?v=21">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Sleek, artistic, and modern geometric fonts -->
@@ -651,78 +651,183 @@
         <section id="portfolio" class="portfolio section">
             <div class="section-header">
                 <h2>Sample Work.</h2>
-                <p>Video work — storytelling, explainers and short-form ads — plus full-stack web projects.</p>
+                <p>Software, AI tools, video editing and graphic design — pick a category.</p>
             </div>
 
-            <div class="slider-container">
-                <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                        <polyline points="15 18 9 12 15 6"></polyline>
-                    </svg>
+            <div class="work-tabs" role="tablist" aria-label="Work categories">
+                <button class="work-tab" role="tab" id="tab-software" aria-controls="panel-software" aria-selected="false" tabindex="-1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="8 6 2 12 8 18"></polyline><polyline points="16 6 22 12 16 18"></polyline></svg>
+                    <span>Software</span>
                 </button>
+                <button class="work-tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" tabindex="-1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg>
+                    <span>AI Tools</span>
+                </button>
+                <button class="work-tab" role="tab" id="tab-video" aria-controls="panel-video" aria-selected="true">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"></rect><polygon points="17 10 22 7 22 17 17 14"></polygon></svg>
+                    <span>Video Editing</span>
+                </button>
+                <button class="work-tab" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"></path><circle cx="11" cy="11" r="2"></circle></svg>
+                    <span>Graphic Design</span>
+                </button>
+            </div>
 
-                <div class="slider-wrapper">
-                    <div class="slider-track">
-                        <div class="slide-item">
-                            <div class="video-hd-wrapper">
-                                <video src="resource/portfolio-reel.mp4" poster="resource/portfolio-reel.jpg" playsinline controls preload="metadata"></video>
+            <!-- Software: static projects + GitHub repos tagged "portfolio" (added by script.js) -->
+            <div class="work-panel" id="panel-software" role="tabpanel" aria-labelledby="tab-software" tabindex="0" hidden>
+                <div class="slider-container fit">
+                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="slider-wrapper">
+                        <div class="slider-track" data-repos="software">
+                            <div class="slide-item">
+                                <article class="project-card">
+                                    <span class="cred-kicker">Full-stack project &middot; 2026</span>
+                                    <h3>Digital Payment Management Web App</h3>
+                                    <p>A full-stack platform for secure peer-to-peer money transfers — JWT authentication and
+                                        authorization, REST APIs in Node.js &amp; Express (MVC), PostgreSQL and MongoDB data models, and
+                                        a responsive frontend wired end to end.</p>
+                                    <ul class="tl-tags">
+                                        <li>Node.js</li>
+                                        <li>Express.js</li>
+                                        <li>React.js</li>
+                                        <li>PostgreSQL</li>
+                                        <li>MongoDB</li>
+                                        <li>JWT</li>
+                                        <li>REST APIs</li>
+                                    </ul>
+                                    <a class="card-link" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">More on GitHub →</a>
+                                </article>
                             </div>
-                            <div class="slide-details">
-                                <span class="category-tag">Short-form Ad</span>
-                                <h3>Portfolio Reel</h3>
-                            </div>
-                        </div>
-                        <div class="slide-item">
-                            <div class="video-hd-wrapper landscape">
-                                <video src="resource/docker-explainer.mp4" poster="resource/docker-explainer.jpg" playsinline controls preload="metadata"></video>
-                            </div>
-                            <div class="slide-details">
-                                <span class="category-tag">Motion Graphics</span>
-                                <h3>Docker Explainer</h3>
-                            </div>
-                        </div>
-                        <div class="slide-item">
-                            <div class="video-hd-wrapper coming-soon">
-                                <div class="coming-inner">
-                                    <span class="coming-icon" aria-hidden="true">&lt;/&gt;</span>
-                                    <h4>Web &amp; AI Projects</h4>
-                                    <p>Websites, AI automations and system-architecture work — launching soon.</p>
-                                    <a href="#contact" class="coming-link">Want one? Let’s talk →</a>
-                                </div>
-                            </div>
-                            <div class="slide-details">
-                                <span class="category-tag">In Progress</span>
-                                <h3>Projects Coming Soon</h3>
+                            <div class="slide-item">
+                                <article class="soon-card">
+                                    <span class="cred-kicker">Coming soon &middot; GitHub</span>
+                                    <h3>Full projects are on their way</h3>
+                                    <p>I’m cleaning up and documenting my complete projects — source code, setup steps and live
+                                        demos — before publishing them on GitHub. Each one shows up here as soon as it’s live.</p>
+                                    <ol class="soon-steps" aria-label="Progress">
+                                        <li class="done">Built</li>
+                                        <li class="current">Documenting</li>
+                                        <li>Publishing</li>
+                                    </ol>
+                                    <div class="soon-actions">
+                                        <a class="soon-btn" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">Browse my GitHub →</a>
+                                        <a class="card-link" href="#contact">Need software built? Let’s talk</a>
+                                    </div>
+                                </article>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <button class="slider-btn next-btn" aria-label="Next Slide">
-                    <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                        <polyline points="9 18 15 12 9 6"></polyline>
-                    </svg>
-                </button>
+                    <button class="slider-btn next-btn" aria-label="Next Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
-        
-            <div class="project-list">
-                <article class="project-card">
-                    <span class="cred-kicker">Full-stack project &middot; 2026</span>
-                    <h3>Digital Payment Management Web App</h3>
-                    <p>A full-stack platform for secure peer-to-peer money transfers — JWT authentication and
-                        authorization, REST APIs in Node.js &amp; Express (MVC), PostgreSQL and MongoDB data models, and
-                        a responsive frontend wired end to end.</p>
-                    <ul class="tl-tags">
-                        <li>Node.js</li>
-                        <li>Express.js</li>
-                        <li>React.js</li>
-                        <li>PostgreSQL</li>
-                        <li>MongoDB</li>
-                        <li>JWT</li>
-                        <li>REST APIs</li>
-                    </ul>
-                    <a class="card-link" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">More on GitHub →</a>
-                </article>
+
+            <!-- AI Tools: GitHub repos tagged "portfolio" + "ai" (added by script.js) -->
+            <div class="work-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" tabindex="0" hidden>
+                <div class="slider-container fit">
+                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="slider-wrapper">
+                        <div class="slider-track" data-repos="ai">
+                            <div class="slide-item">
+                                <article class="soon-card">
+                                    <span class="cred-kicker">Coming soon &middot; GitHub</span>
+                                    <h3>AI tools &amp; automations</h3>
+                                    <p>I’m building AI automations (learning) — workflow bots, content helpers and small tools for
+                                        creators and local businesses. Each experiment will be published on GitHub with a short
+                                        demo, and appear here automatically.</p>
+                                    <ol class="soon-steps" aria-label="Progress">
+                                        <li class="done">Learning</li>
+                                        <li class="current">Building</li>
+                                        <li>Publishing</li>
+                                    </ol>
+                                    <div class="soon-actions">
+                                        <a class="soon-btn" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">Browse my GitHub →</a>
+                                        <a class="card-link" href="#contact">Have an idea to automate? Let’s talk</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next-btn" aria-label="Next Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Video Editing: slides are added by script.js from resource/work/works.js -->
+            <div class="work-panel" id="panel-video" role="tabpanel" aria-labelledby="tab-video" tabindex="0">
+                <div class="slider-container">
+                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="slider-wrapper">
+                        <div class="slider-track"></div>
+                    </div>
+
+                    <button class="slider-btn next-btn" aria-label="Next Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Graphic Design: slides are added by script.js from resource/work/design/ -->
+            <div class="work-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design" tabindex="0" hidden>
+                <div class="slider-container fit">
+                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="15 18 9 12 15 6"></polyline>
+                        </svg>
+                    </button>
+
+                    <div class="slider-wrapper">
+                        <div class="slider-track">
+                            <div class="slide-item" data-soon="design">
+                                <article class="soon-card">
+                                    <span class="cred-kicker">Coming soon</span>
+                                    <h3>Design gallery</h3>
+                                    <p>YouTube thumbnails, channel art, posters and social creatives — I’m picking the best pieces
+                                        (with client permission) for this gallery.</p>
+                                    <ol class="soon-steps" aria-label="Progress">
+                                        <li class="done">Designed</li>
+                                        <li class="current">Curating</li>
+                                        <li>Publishing</li>
+                                    </ol>
+                                    <div class="soon-actions">
+                                        <a class="soon-btn" href="#contact">Need a design? Let’s talk →</a>
+                                    </div>
+                                </article>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="slider-btn next-btn" aria-label="Next Slide">
+                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
+                            <polyline points="9 18 15 12 9 6"></polyline>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </section>
 
@@ -984,7 +1089,8 @@
         <p>©2026 Abhijeet Gorhe. All rights reserved.</p>
     </footer>
 
-    <script src="script.js?v=9"></script>
+    <script src="resource/work/works.js"></script>
+    <script src="script.js?v=13"></script>
 </body>
 
 </html>

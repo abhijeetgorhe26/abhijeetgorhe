@@ -317,55 +317,224 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3D Roulette Slider Logic
-    const slides = document.querySelectorAll('.slide-item');
-    const prevBtn = document.querySelector('.prev-btn');
-    const nextBtn = document.querySelector('.next-btn');
+    // --- Sample Work: four tabs, each a 3D roulette slider ---
+    const el = (tag, className, text) => {
+        const node = document.createElement(tag);
+        if (className) node.className = className;
+        if (text) node.textContent = text;
+        return node;
+    };
+    const slideOf = (...children) => {
+        const slide = el('div', 'slide-item');
+        slide.append(...children);
+        return slide;
+    };
+    const detailsOf = (tag, title, description) => {
+        const details = el('div', 'slide-details');
+        details.append(el('span', 'category-tag', tag), el('h3', '', title));
+        if (description) details.appendChild(el('p', 'slide-desc', description));
+        return details;
+    };
 
-    let currentIndex = 0;
+    // Video Editing: one slide per video in resource/work/ (list built by tools/build-work.mjs)
+    const videoTrack = document.querySelector('#panel-video .slider-track');
+    if (videoTrack && Array.isArray(window.SAMPLE_WORKS)) {
+        window.SAMPLE_WORKS.forEach((work) => {
+            const wrapper = el('div', 'video-hd-wrapper');
+            if (work.orientation === 'landscape') wrapper.classList.add('landscape');
 
-    if (slides.length > 0) {
-        const updateSlider = () => {
-            slides.forEach((slide, index) => {
+            const video = el('video');
+            video.src = work.src;
+            if (work.poster) video.poster = work.poster;
+            video.playsInline = true;
+            video.controls = true;
+            video.preload = 'metadata';
+            video.setAttribute('aria-label', [work.title, work.description].filter(Boolean).join(' — '));
+            // Fall back to the video's own size when the build couldn't detect it
+            if (!work.orientation) {
+                video.addEventListener('loadedmetadata', () => {
+                    wrapper.classList.toggle('landscape', video.videoWidth > video.videoHeight);
+                }, { once: true });
+            }
+            wrapper.appendChild(video);
+            videoTrack.appendChild(slideOf(wrapper, detailsOf(work.tag, work.title, work.description)));
+        });
+    }
+
+    // Graphic Design: one slide per image in resource/work/design/ (list built by tools/build-work.mjs)
+    const designTrack = document.querySelector('#panel-design .slider-track');
+    const designs = Array.isArray(window.SAMPLE_DESIGNS) ? window.SAMPLE_DESIGNS : [];
+    if (designTrack && designs.length) {
+        designs.forEach((d) => {
+            const link = el('a', 'design-frame');
+            link.href = d.src;
+            link.target = '_blank';
+            link.rel = 'noopener';
+            const img = el('img');
+            img.src = d.src;
+            img.alt = [d.title, d.description].filter(Boolean).join(' — ');
+            if (d.width && d.height) {
+                img.width = d.width;
+                img.height = d.height;
+            }
+            link.appendChild(img);
+            designTrack.appendChild(slideOf(link, detailsOf(d.tag, d.title, d.description)));
+        });
+        // Real designs replace the "coming soon" slide
+        designTrack.querySelector('[data-soon="design"]')?.remove();
+    }
+
+    // 3D Roulette Slider: works for every .slider-container. "fit" sliders size to their slides.
+    const initSlider = (container) => {
+        const track = container.querySelector('.slider-track');
+        const prevBtn = container.querySelector('.prev-btn');
+        const nextBtn = container.querySelector('.next-btn');
+        const slides = () => [...track.children].filter(s => s.classList.contains('slide-item'));
+        let current = 0;
+
+        const update = () => {
+            const all = slides();
+            current = Math.min(current, Math.max(all.length - 1, 0));
+            all.forEach((slide, index) => {
                 slide.classList.remove('active', 'prev', 'next');
-
-                if (index === currentIndex) {
+                if (index === current) {
                     slide.classList.add('active');
-                } else if (index === (currentIndex - 1 + slides.length) % slides.length) {
+                } else if (index === (current - 1 + all.length) % all.length) {
                     slide.classList.add('prev');
-                } else if (index === (currentIndex + 1) % slides.length) {
+                } else if (index === (current + 1) % all.length) {
                     slide.classList.add('next');
                 }
+                // Stop videos that slide out of focus so their audio doesn't keep playing
+                if (index !== current) slide.querySelectorAll('video').forEach(v => v.pause());
             });
+            // Nothing to spin through with a single slide
+            [prevBtn, nextBtn].forEach(btn => { if (btn) btn.hidden = all.length < 2; });
+        };
+        const go = (step) => {
+            const count = slides().length;
+            if (count < 2) return;
+            current = (current + step + count) % count;
+            update();
         };
 
-        // Initialize
-        updateSlider();
+        // Size "fit" sliders to their tallest slide (cards and banners aren't video height)
+        const fit = () => {
+            if (!container.classList.contains('fit') || container.closest('[hidden]')) return;
+            container.style.setProperty('--slide-h', '0px');
+            const tallest = Math.max(0, ...slides().map(s => s.offsetHeight));
+            container.style.setProperty('--slide-h', `${tallest}px`);
+        };
 
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                updateSlider();
-            });
+        prevBtn?.addEventListener('click', () => go(-1));
+        nextBtn?.addEventListener('click', () => go(1));
+        // Clicking a side slide brings it to the front instead of following its links
+        track.addEventListener('click', (e) => {
+            const slide = e.target.closest('.slide-item');
+            if (!slide || slide.classList.contains('active')) return;
+            if (slide.classList.contains('prev') || slide.classList.contains('next')) {
+                e.preventDefault();
+                e.stopPropagation();
+                go(slide.classList.contains('prev') ? -1 : 1);
+            }
+        }, true);
 
-            nextBtn.addEventListener('click', () => {
-                currentIndex = (currentIndex + 1) % slides.length;
-                updateSlider();
-            });
-        }
+        update();
+        fit();
+        return { refresh: () => { update(); fit(); }, fit };
+    };
+    const sliders = new Map();
+    document.querySelectorAll('.slider-container').forEach(c => sliders.set(c, initSlider(c)));
+    const fitAll = () => sliders.forEach(s => s.fit());
+    window.addEventListener('resize', fitAll);
+    document.fonts?.ready.then(fitAll);
+    document.querySelectorAll('.design-frame img').forEach(img => img.addEventListener('load', fitAll, { once: true }));
 
-        // Click on side slides to navigate
-        slides.forEach((slide) => {
-            slide.addEventListener('click', () => {
-                if (slide.classList.contains('prev')) {
-                    currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-                    updateSlider();
-                } else if (slide.classList.contains('next')) {
-                    currentIndex = (currentIndex + 1) % slides.length;
-                    updateSlider();
-                }
-            });
+    // Tabs: Software / AI Tools / Video Editing / Graphic Design
+    const tabs = [...document.querySelectorAll('.work-tab')];
+    const selectTab = (tab, focus) => {
+        tabs.forEach((t) => {
+            const on = t === tab;
+            t.setAttribute('aria-selected', on);
+            t.tabIndex = on ? 0 : -1;
+            document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
         });
+        // Leaving the video tab shouldn't leave a video playing
+        if (tab.id !== 'tab-video') document.querySelectorAll('#panel-video video').forEach(v => v.pause());
+        // Hidden panels can't be measured, so size the newly shown slider now
+        fitAll();
+        if (focus) tab.focus();
+    };
+    tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => selectTab(tab));
+        tab.addEventListener('keydown', (e) => {
+            const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+            if (step) selectTab(tabs[(i + step + tabs.length) % tabs.length], true);
+            else if (e.key === 'Home') selectTab(tabs[0], true);
+            else if (e.key === 'End') selectTab(tabs[tabs.length - 1], true);
+            else return;
+            e.preventDefault();
+        });
+    });
+
+    // Software & AI Tools: public GitHub repos tagged with the topic "portfolio"
+    // (add the topic "ai" too to file it under AI Tools). Untagged practice repos stay off the site.
+    const GITHUB_USER = 'abhijeetgorhe26';
+    const renderRepos = (repos) => {
+        const prettify = (name) => name.replace(/[-_]+/g, ' ').trim();
+        const touched = new Set();
+        repos
+            .filter(r => !r.fork && (r.topics || []).includes('portfolio'))
+            .sort((a, b) => new Date(b.pushed_at) - new Date(a.pushed_at))
+            .forEach((repo) => {
+                const kind = repo.topics.includes('ai') ? 'ai' : 'software';
+                const track = document.querySelector(`[data-repos="${kind}"]`);
+                if (!track) return;
+
+                const card = el('article', 'project-card');
+                const kicker = [repo.language, new Date(repo.pushed_at).getFullYear()].filter(Boolean).join(' · ');
+                card.append(el('span', 'cred-kicker', kicker), el('h3', '', prettify(repo.name)));
+                if (repo.description) card.appendChild(el('p', '', repo.description));
+                const tags = repo.topics.filter(t => t !== 'portfolio' && t !== 'ai');
+                if (tags.length) {
+                    const list = el('ul', 'tl-tags');
+                    tags.forEach(t => list.appendChild(el('li', '', t)));
+                    card.appendChild(list);
+                }
+                [['View code →', repo.html_url], ['Live demo →', repo.homepage]]
+                    .filter(([, href]) => href && /^https?:\/\//.test(href))
+                    .forEach(([label, href]) => {
+                        const a = el('a', 'card-link', label);
+                        a.href = href;
+                        a.target = '_blank';
+                        a.rel = 'noopener';
+                        card.appendChild(a);
+                    });
+                // Real projects go before the "coming soon" slide
+                const soon = track.querySelector('.soon-card')?.closest('.slide-item') ?? null;
+                track.insertBefore(slideOf(card), soon);
+                touched.add(track.closest('.slider-container'));
+            });
+        touched.forEach(c => sliders.get(c)?.refresh());
+    };
+    if (document.querySelector('[data-repos]')) {
+        const cacheKey = 'gh-repos';
+        let cached = null;
+        try { cached = JSON.parse(sessionStorage.getItem(cacheKey)); } catch { /* storage unavailable */ }
+        if (cached) {
+            renderRepos(cached);
+        } else {
+            fetch(`https://api.github.com/users/${GITHUB_USER}/repos?per_page=100`)
+                .then(res => (res.ok ? res.json() : []))
+                .then((repos) => {
+                    if (!Array.isArray(repos)) return;
+                    // Keep only what we render so the cache stays small
+                    const slim = repos.map(({ name, description, html_url, homepage, language, topics, fork, pushed_at }) =>
+                        ({ name, description, html_url, homepage, language, topics, fork, pushed_at }));
+                    try { sessionStorage.setItem(cacheKey, JSON.stringify(slim)); } catch { /* storage unavailable */ }
+                    renderRepos(slim);
+                })
+                .catch(() => { /* offline or rate-limited: the "coming soon" slides still show */ });
+        }
     }
 
     // Smooth Scrolling for Nav Links

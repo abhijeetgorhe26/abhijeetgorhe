@@ -1,0 +1,15 @@
+#!/bin/sh
+# Rebuild the Sample Work list whenever something in resource/work/ is committed.
+# Enabled once per clone with: git config core.hooksPath .githooks
+
+if git diff --cached --name-only | grep -q '^resource/work/'; then
+    node tools/build-work.mjs || exit 1
+    git add resource/work/works.js
+    # Posters the build made for newly committed videos
+    git diff --cached --name-only --diff-filter=AM | grep -E '^resource/work/[^/]+\.(mp4|webm|mov)$' |
+        while read -r video; do
+            poster="${video%.*}.jpg"
+            [ -f "$poster" ] && git add "$poster"
+        done
+fi
+exit 0
