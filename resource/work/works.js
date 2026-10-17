@@ -16,5 +16,13 @@ window.SAMPLE_DESIGNS = [
         "title": "KRU Automation Hub — Marathi Banner",
         "tag": "Brand Banner · Marathi",
         "description": "Marathi version of the KRU Automation Hub banner for local audiences."
+    },
+    {
+        "src": "resource/work/design/daksha.png",
+        "width": 9600,
+        "height": 2400,
+        "title": "Daksh Engineering & Workshop — Marathi Shop Banner",
+        "tag": "Shop Flex Banner · Marathi",
+        "description": "Marathi shop flex banner for an engineering workshop that makes tractor trolleys, tankers and ploughs, with a gold 3D title and product cards on a maroon background."
     }
 ];
