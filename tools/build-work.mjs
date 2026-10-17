@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Builds resource/work/works.js — the lists the "Sample Work" section renders.
 //
-// Drop a video into resource/work/ (or an image into resource/work/design/) and it
+// Drop a video into resource/work/video/ (or an image into resource/work/design/) and it
 // shows up on the site. Optional extras, matched by file name (e.g. my-client.mp4):
 //   my-client.jpg   poster image (auto-made from the video if ffmpeg is installed)
 //   my-client.json  { "title": "...", "tag": "...", "description": "...", "order": 1 }
@@ -15,6 +15,7 @@ import { join, parse } from 'node:path';
 
 const DIR = 'resource/work';
 const OUT = join(DIR, 'works.js');
+const VIDEO_DIR = join(DIR, 'video');
 const VIDEO_EXT = ['.mp4', '.webm', '.mov'];
 const POSTER_EXT = ['.jpg', '.jpeg', '.png', '.webp'];
 const LARGE_MB = 25;
@@ -69,22 +70,22 @@ const makePoster = (video, poster) => {
     } catch { return false; }
 };
 
-const files = readdirSync(DIR);
+const files = existsSync(VIDEO_DIR) ? readdirSync(VIDEO_DIR) : [];
 const works = files
     .filter((f) => VIDEO_EXT.includes(parse(f).ext.toLowerCase()))
     .map((file) => {
         const { name } = parse(file);
-        const video = join(DIR, file);
+        const video = join(VIDEO_DIR, file);
 
         let meta = {};
-        const metaFile = join(DIR, `${name}.json`);
+        const metaFile = join(VIDEO_DIR, `${name}.json`);
         if (existsSync(metaFile)) {
             try { meta = JSON.parse(readFileSync(metaFile, 'utf8')); }
             catch (e) { console.warn(`  ! ignoring ${metaFile}: ${e.message}`); }
         }
 
         let poster = POSTER_EXT.map((ext) => `${name}${ext}`).find((p) => files.includes(p));
-        if (!poster && canPoster && makePoster(video, join(DIR, `${name}.jpg`))) poster = `${name}.jpg`;
+        if (!poster && canPoster && makePoster(video, join(VIDEO_DIR, `${name}.jpg`))) poster = `${name}.jpg`;
 
         const mb = statSync(video).size / 1e6;
         if (mb > LARGE_MB) {
@@ -93,8 +94,8 @@ const works = files
         }
 
         return {
-            src: `${DIR}/${file}`,
-            poster: poster ? `${DIR}/${poster}` : null,
+            src: `${VIDEO_DIR}/${file}`,
+            poster: poster ? `${VIDEO_DIR}/${poster}` : null,
             title: meta.title || titleFromName(name),
             tag: meta.tag || 'Video',
             description: meta.description || '',
