@@ -4,7 +4,9 @@
 // Drop a video into resource/work/video/ (or an image into resource/work/design/) and it
 // shows up on the site. Optional extras, matched by file name (e.g. my-client.mp4):
 //   my-client.jpg   poster image (auto-made from the video if ffmpeg is installed)
-//   my-client.json  { "title": "...", "tag": "...", "description": "...", "order": 1 }
+//   my-client.json  { "title": "...", "tag": "Documentary", "description": "...", "order": 1,
+//                     "compare": true ("Reference vs Mine") or a label like "Before / After",
+//                     "orientation": "square" for 1:1 videos, "featured": true (hero card) }
 //
 // Runs automatically from the pre-commit hook (.githooks/pre-commit).
 // Run by hand with: node tools/build-work.mjs
@@ -59,6 +61,19 @@ const sizeOf = (file) => {
     } catch { return {}; }
 };
 
+// "1:05" style running time for the card
+const durationOf = (file) => {
+    if (!canProbe) return null;
+    try {
+        const sec = parseFloat(execFileSync('ffprobe', [
+            '-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file,
+        ]).toString());
+        if (!Number.isFinite(sec)) return null;
+        const s = Math.round(sec);
+        return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+    } catch { return null; }
+};
+
 const makePoster = (video, poster) => {
     try {
         execFileSync('ffmpeg', [
@@ -100,6 +115,9 @@ const works = files
             tag: meta.tag || 'Video',
             description: meta.description || '',
             orientation: meta.orientation || orientationOf(video),
+            duration: meta.duration || durationOf(video),
+            ...(meta.compare ? { compare: meta.compare } : {}),
+            ...(meta.featured ? { featured: true } : {}),
             order: Number.isFinite(meta.order) ? meta.order : 100,
         };
     })
