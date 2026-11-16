@@ -11,7 +11,7 @@
     <meta name="keywords"
         content="Abhijeet Gorhe, Abhijeet Sanjay Gorhe, Abhijit Gore, full stack developer Nashik, React developer Nashik, video editor in Nashik, video editor in Malegaon, graphic designer in Nashik, graphic designer in Malegaon, design studio Nashik, web designer Nashik, web developer Malegaon, motion graphics Nashik, AI automation Nashik, YouTube video editor Maharashtra, Computer Science Engineer">
     <meta name="robots" content="index, follow, max-image-preview:large">
-    <meta name="theme-color" content="#070707">
+    <meta name="theme-color" content="#140705">
     <meta name="geo.region" content="IN-MH">
     <meta name="geo.placename" content="Nashik, Malegaon">
     <link rel="canonical" href="https://abhijeetgorhe.me/">
@@ -369,728 +369,285 @@
     }
     </script>
 
-    <link rel="stylesheet" href="style.css?v=21">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Sleek, artistic, and modern geometric fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="resource/hero/portrait.webp" type="image/webp">
+    <script>
+        // apply the saved theme before first paint (no flash)
+        try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch (e) {}
+    </script>
+    <link rel="stylesheet" href="style.css?v=32">
 </head>
 
 <body>
     <script>document.documentElement.classList.add('js');</script>
+    <a class="skip" href="#work">Skip to work</a>
 
-    <div id="loader" class="loader" aria-hidden="true">
-        <div class="loader-inner">
-            <div class="loader-name">
-                <span class="loader-word">Abhijeet</span>
-                <span class="loader-word accent">Gorhe<span class="did">.</span></span>
-            </div>
-            <div class="loader-tagline">Code &middot; Video &middot; Design</div>
-            <svg class="loader-heartbeat" viewBox="0 0 720 120" preserveAspectRatio="none" aria-hidden="true">
-                <path class="hb-track" d="M0 60 H90 L104 60 L114 44 L124 60 L134 60 L146 14 L160 104 L174 30 L186 60 H300 L314 60 L324 44 L334 60 L344 60 L356 14 L370 104 L384 30 L396 60 H520 L534 60 L544 44 L554 60 L564 60 L576 14 L590 104 L604 30 L616 60 H720" />
-                <path class="hb-pulse" d="M0 60 H90 L104 60 L114 44 L124 60 L134 60 L146 14 L160 104 L174 30 L186 60 H300 L314 60 L324 44 L334 60 L344 60 L356 14 L370 104 L384 30 L396 60 H520 L534 60 L544 44 L554 60 L564 60 L576 14 L590 104 L604 30 L616 60 H720" pathLength="1000" />
-            </svg>
-            <div class="loader-count"><span id="loader-pct">0</span>%</div>
-        </div>
-        <div class="loader-curtain"></div>
+    <header class="nav" id="top">
+        <a class="nav-logo" href="#home" aria-label="Abhijeet Gorhe — back to top">Abhijeet<sup>©</sup></a>
+        <nav class="nav-links" aria-label="Main">
+            <a href="#work">Work</a>
+            <a href="#services">Services</a>
+            <a href="#about">About</a>
+            <a href="#experience">Experience</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <button class="nav-theme" type="button" aria-label="Switch to light mode">
+            <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+            <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.2A8.5 8.5 0 0 1 9.8 3.5 8.5 8.5 0 1 0 20.5 14.2z"/></svg>
+        </button>
+        <a class="nav-cta" href="#contact"><span class="pulse" aria-hidden="true"></span> Let's talk</a>
+        <button class="nav-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span></button>
+    </header>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+        <a href="#work">Work</a><a href="#services">Services</a><a href="#about">About</a><a href="#experience">Experience</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
     </div>
 
-    <div class="scroll-progress" aria-hidden="true"></div>
-    <div class="clean-grid"></div>
-
-    <header class="header">
-        <a class="logo" href="#home" aria-label="Abhijeet Gorhe — back to home">Abhijeet Gorhe<span class="did">.</span></a>
-        
-        <!-- Mobile Navigation Pill (Reference Design) -->
-        <div class="mobile-nav-pill d-md-none">
-            <button class="nav-arrow prev" aria-label="Previous Section">←</button>
-            <span id="current-section">Home</span>
-            <button class="nav-arrow next" aria-label="Next Section">→</button>
-        </div>
-
-        <nav class="nav d-none d-md-flex">
-            <a href="#about">About</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Work</a>
-            <a href="#proof">Proof</a>
-            <a href="#faq">FAQ</a>
-            <a href="#contact">Contact</a>
-        </nav>
-
-        <div class="header-actions">
-            <button id="theme-toggle" class="theme-btn" aria-label="Toggle Theme">
-                <span class="icon-sun">☀️</span>
-                <span class="icon-moon" style="display:none;">🌙</span>
-            </button>
-            <a href="#contact" class="hire-pill-btn">Let's Hire</a>
-        </div>
-    </header>
-
     <main>
-        <section id="home" class="hero section">
-            <div class="hero-content">
-                <div class="ai-badge">
-                    <span class="dot"></span> Available for work
+        <!-- ================= HERO ================= -->
+        <section class="hero" id="home">
+            <div class="hero-panel">
+                <div class="hero-grid" aria-hidden="true">
+                    <i style="--x:25%;--y:33.3%"></i><i style="--x:50%;--y:33.3%"></i><i style="--x:75%;--y:33.3%"></i>
+                    <i style="--x:25%;--y:66.6%"></i><i style="--x:50%;--y:66.6%"></i><i style="--x:75%;--y:66.6%"></i>
                 </div>
-                <h1 class="hero-title"><span class="hero-name">Abhijeet Gorhe</span> Computer Science Engineer <br>&amp; <span class="text-gradient">Video Editor</span></h1>
-                <ul class="hero-tags" aria-label="Also">
-                    <li>Full Stack Developer</li>
-                    <li>Motion Graphics</li>
-                    <li>Graphic Design</li>
-                    <li>AI Automation <em>(learning)</em></li>
-                </ul>
-                <p class="hero-desc">I help <span class="highlight">YouTubers</span>, <span class="highlight">creators</span> and
-                    <span class="highlight">local businesses</span> in Nashik and Malegaon grow with video editing,
-                    motion graphics and design &mdash; built faster with modern AI tools.</p>
-                <div class="hero-actions">
-                    <a href="#portfolio" class="artistic-btn primary">View Work</a>
-                    <a href="#contact" class="artistic-btn ghost">Hire Me</a>
+
+                <p class="hero-ghost" aria-hidden="true">GORHE</p>
+
+                <img class="hero-portrait" src="resource/hero/portrait.webp" width="880" height="1100"
+                    alt="Abhijeet Gorhe in an orange t-shirt, smiling" fetchpriority="high">
+
+                <p class="hero-tagline">Documentary edits, visual storytelling, motion design and cinematic colour grading &mdash; stories that keep people watching.</p>
+
+                <div class="hero-note" aria-hidden="true">
+                    <span class="pin"></span>
+                    Open for<br>freelance &check;
+                </div>
+
+                <a class="hero-latest" href="#work" data-latest>
+                    <span class="hero-latest-media"><img src="" alt="" width="320" height="180" loading="lazy"></span>
+                    <span class="hero-latest-meta"><span class="dot-spark" aria-hidden="true">&#10035;</span> <span data-latest-title>Latest edit</span> <em data-latest-tag>/Video</em></span>
+                </a>
+
+                <div class="hero-foot">
+                    <span class="hero-year">&copy;2026</span>
+                    <h1 class="hero-name">Abhijeet<span class="sr-only"> Gorhe — documentary video editor, motion designer and colourist in Nashik &amp; Malegaon</span></h1>
+                </div>
+
+                <a class="talk-card" href="#contact">
+                    <img src="resource/hero/portrait-thumb.jpg" alt="" width="160" height="160">
+                    <span class="talk-text"><small>Let's Talk</small><strong>Abhijeet Gorhe</strong><span>Video Editor &amp; Motion Designer</span></span>
+                    <span class="talk-go" aria-hidden="true">&#8599;</span>
+                    <span class="talk-spark" aria-hidden="true">&#10035;</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- ================= MARQUEE ================= -->
+        <div class="band" aria-hidden="true">
+            <div class="band-track">
+                <span>Documentary</span><span class="o">Visual Storytelling</span><span>Motion Design</span><span class="o">Cinematic Editing</span><span>Colour Grading</span><span class="o">Premiere &amp; After Effects</span>
+                <span>Documentary</span><span class="o">Visual Storytelling</span><span>Motion Design</span><span class="o">Cinematic Editing</span><span>Colour Grading</span><span class="o">Premiere &amp; After Effects</span>
+            </div>
+        </div>
+
+        <!-- ================= WORK ================= -->
+        <section class="section work" id="work">
+            <div class="head">
+                <p class="kicker">(01) Selected edits</p>
+                <h2 class="title">Work that<br><span class="stroke">holds</span> attention.</h2>
+                <p class="lede">Real edits — many side by side with the reference I was matching. Hover to preview, click to watch right here with sound.</p>
+            </div>
+
+            <div class="filters" role="toolbar" aria-label="Filter work">
+                <button type="button" class="chip is-on" data-filter="all" aria-pressed="true">All</button>
+                <button type="button" class="chip" data-filter="Documentary" aria-pressed="false">Documentary</button>
+                <button type="button" class="chip" data-filter="Visual Storytelling" aria-pressed="false">Visual Storytelling</button>
+                <button type="button" class="chip" data-filter="Motion Design" aria-pressed="false">Motion Design</button>
+                <button type="button" class="chip" data-filter="Cinematic & Colour" aria-pressed="false">Cinematic Editing &amp; Colour</button>
+            </div>
+
+            <div class="work-grid" id="work-grid"><!-- cards from resource/work/works.js --></div>
+
+        </section>
+
+        <!-- ================= STATS ================= -->
+        <section class="stats" aria-label="Highlights">
+            <div class="stat"><b data-count="40.7" data-decimals="1" data-suffix="K">40.7K</b><span>YouTube views in 40 days</span></div>
+            <div class="stat"><b data-count="750" data-prefix="+">+750</b><span>subscribers gained</span></div>
+            <div class="stat"><b data-count="963">963</b><span>hours of watch time</span></div>
+            <div class="stat"><b data-count="2" data-suffix=" yrs">2 yrs</b><span>creating for social media</span></div>
+        </section>
+
+        <!-- ================= SERVICES ================= -->
+        <section class="section services" id="services">
+            <div class="head">
+                <p class="kicker">(02) Services</p>
+                <h2 class="title">What I can<br>do <span class="stroke">for you.</span></h2>
+                <p class="lede">Four things I do, and do properly — for YouTubers, creators and brands in Nashik, Malegaon and anywhere online.</p>
+            </div>
+            <ol class="svc-list">
+                <li class="svc"><span class="svc-n">01</span><h3>Documentary Editing</h3><p>Research-heavy, narration-led edits — archival footage, maps, captions and pacing that keeps a 10-minute story moving.</p><span class="svc-arrow" aria-hidden="true">&#8599;</span></li>
+                <li class="svc"><span class="svc-n">02</span><h3>Visual Storytelling</h3><p>Turning a script or idea into shots, sound and rhythm — Reels, Shorts and YouTube edits built around one clear story.</p><span class="svc-arrow" aria-hidden="true">&#8599;</span></li>
+                <li class="svc"><span class="svc-n">03</span><h3>Motion Design</h3><p>Kinetic typography, animated maps, explainers and titles in After Effects that make information easy to follow.</p><span class="svc-arrow" aria-hidden="true">&#8599;</span></li>
+                <li class="svc"><span class="svc-n">04</span><h3>Cinematic Editing &amp; Colour Grading</h3><p>Film-style cuts and grades — from flat footage to a consistent, cinematic look matched to your reference.</p><span class="svc-arrow" aria-hidden="true">&#8599;</span></li>
+            </ol>
+            <div class="tools">
+                <p class="tools-label">Tools</p>
+                <ul class="tags"><li>Premiere Pro</li><li>After Effects</li><li>Photoshop</li><li>Illustrator</li><li>Lightroom</li><li>Adobe XD</li><li>ChatGPT</li><li>Claude</li><li>Google AI</li></ul>
+            </div>
+        </section>
+
+        <!-- ================= ABOUT ================= -->
+        <section class="section about" id="about">
+            <figure class="about-photo">
+                <img src="resource/hero/portrait.webp" alt="Abhijeet Gorhe" width="880" height="1100" loading="lazy">
+                <figcaption>Malegaon, Nashik &middot; IN</figcaption>
+            </figure>
+            <div class="about-text">
+                <p class="kicker">(03) About</p>
+                <h2 class="title">Engineer by degree,<br><span class="stroke">editor</span> by obsession.</h2>
+                <p class="big">Hi, I’m <strong>Abhijeet Rajshree Sanjay Gorhe</strong> — a Computer Science Engineer, full-stack developer and video editor from Malegaon, Nashik (Maharashtra).</p>
+                <p>I studied <strong>B.Tech in Computer Science &amp; Engineering at Walchand College of Engineering, Sangli</strong> (2022–2026). Today I work as a <strong>Full Stack Web Developer Intern at 10xTech</strong>, building with React, TypeScript, Node.js and Docker.</p>
+                <p>For the last two years I’ve been creating for social media and growing my own YouTube channel, so I edit with retention in mind, not just style. I study the edits I admire frame by frame, rebuild them, then make them my own — that’s what the comparisons above are.</p>
+                <div class="about-actions">
+                    <a class="btn btn-solid" href="#contact">Work with me</a>
+                    <a class="btn btn-ghost" href="https://www.youtube.com/@abhijeetgorhe" target="_blank" rel="noopener">YouTube &#8599;</a>
                 </div>
             </div>
-            <div class="hero-visual">
-                <div class="brain-pop" role="img"
-                    aria-label="Abhijeet Gorhe scratching his head; the top of his head opens and a glowing brain pops out with question marks around it">
-                    <img class="bp-layer bp-doodles bp-doodles-left" src="resource/hero/doodles.png" alt="" width="1000" height="1000" decoding="async">
-                    <img class="bp-layer bp-doodles bp-doodles-right" src="resource/hero/doodles.png" alt="" width="1000" height="1000" decoding="async">
-                    <img class="bp-layer bp-body" src="resource/hero/body.png" alt="" width="1000" height="1000" fetchpriority="high">
-                    <img class="bp-layer bp-eyes" src="resource/hero/eyes-down.png" alt="" width="1000" height="1000">
-                    <svg class="bp-layer bp-hole" viewBox="0 0 1000 1000" aria-hidden="true">
-                        <defs>
-                            <radialGradient id="bpHole" cx="50%" cy="45%" r="60%">
-                                <stop offset="0%" stop-color="#1a0303" />
-                                <stop offset="70%" stop-color="#4a0d0d" />
-                                <stop offset="100%" stop-color="#b4584a" />
-                            </radialGradient>
-                        </defs>
-                        <ellipse cx="535" cy="415" rx="130" ry="24" transform="rotate(-15.8 535 415)"
-                            fill="url(#bpHole)" stroke="#e7a58f" stroke-width="3" />
-                    </svg>
-                    <img class="bp-layer bp-lid" src="resource/hero/lid.png" alt="" width="1000" height="1000">
-                    <div class="bp-ideas" aria-hidden="true">
-                        <span class="bp-trail"><i></i><i></i><i></i></span>
-                        <div class="bp-bulb">
-                            <span class="bp-bulb-glow"></span>
-                            <svg class="bp-rays" viewBox="-60 -60 120 120"><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(0)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(30)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(60)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(90)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(120)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(150)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(180)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(210)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(240)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(270)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(300)"/><line x1="0" y1="-34" x2="0" y2="-48" transform="rotate(330)"/></svg>
-                            <svg class="bp-bulb-svg" viewBox="0 0 64 96">
-                                <defs>
-                                    <radialGradient id="bpBulbOn" cx="50%" cy="40%" r="60%">
-                                        <stop offset="0%" stop-color="#fffbe0" />
-                                        <stop offset="45%" stop-color="#ffd54a" />
-                                        <stop offset="100%" stop-color="#ff8a00" />
-                                    </radialGradient>
-                                </defs>
-                                <g class="bulb-off">
-                                    <path d="M32 4C17.6 4 7 14.6 7 28.5c0 9.3 4.9 15.4 9.4 20.6 3 3.5 4.6 6.8 4.6 10.9v3h22v-3c0-4.1 1.6-7.4 4.6-10.9C52.1 43.9 57 37.8 57 28.5 57 14.6 46.4 4 32 4z" fill="rgba(255,255,255,0.08)" stroke="#fff" stroke-width="3" />
-                                    <path d="M25 50c0-6 3-9 3-15m11 15c0-6-3-9-3-15m-8 0c1.5-3 6.5-3 8 0" fill="none" stroke="#8a8a8a" stroke-width="2.4" stroke-linecap="round" />
-                                </g>
-                                <g class="bulb-on">
-                                    <path d="M32 4C17.6 4 7 14.6 7 28.5c0 9.3 4.9 15.4 9.4 20.6 3 3.5 4.6 6.8 4.6 10.9v3h22v-3c0-4.1 1.6-7.4 4.6-10.9C52.1 43.9 57 37.8 57 28.5 57 14.6 46.4 4 32 4z" fill="url(#bpBulbOn)" stroke="#fff" stroke-width="3" />
-                                    <path d="M25 50c0-6 3-9 3-15m11 15c0-6-3-9-3-15m-8 0c1.5-3 6.5-3 8 0" fill="none" stroke="#fff7c2" stroke-width="2.6" stroke-linecap="round" />
-                                    <path d="M19 20c2-5 6-8 11-9" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" opacity="0.8" />
-                                </g>
-                                <rect x="20" y="64" width="24" height="7" rx="3" fill="#d9d9d9" stroke="#fff" stroke-width="2" />
-                                <rect x="21.5" y="72" width="21" height="7" rx="3" fill="#bdbdbd" stroke="#fff" stroke-width="2" />
-                                <path d="M26 80h12l-3 7h-6z" fill="#9e9e9e" stroke="#fff" stroke-width="2" stroke-linejoin="round" />
-                            </svg>
-                            <span class="bp-burst"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>
-                        </div>
-                        <span class="bp-idea" style="--x:24.2;--y:2.0;--dx:3.46;--dy:1.16;--i:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M10 9.2l5 2.8-5 2.8z" fill="currentColor"/></svg></span>
-                        <span class="bp-idea" style="--x:31.7;--y:-9.1;--dx:2.66;--dy:2.32;--i:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l6.5 7L12 21 5.5 10z"/><circle cx="12" cy="11" r="1.7"/><path d="M12 3v6.3"/></svg></span>
-                        <span class="bp-idea bp-idea-accent" style="--x:44.3;--y:-16.0;--dx:1.34;--dy:3.06;--i:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 8l-4 4 4 4M16 8l4 4-4 4M13.6 5.5l-3.2 13"/></svg></span>
-                        <span class="bp-idea" style="--x:69.7;--y:-16.0;--dx:-1.34;--dy:3.06;--i:3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="6.5" y="6.5" width="11" height="11" rx="2.2"/><path d="M10 3.5v3M14 3.5v3M10 17.5v3M14 17.5v3M3.5 10h3M3.5 14h3M17.5 10h3M17.5 14h3"/><text x="12" y="14.3" font-size="5.6" font-weight="700" text-anchor="middle" fill="currentColor" stroke="none" font-family="Arial, sans-serif">AI</text></svg></span>
-                        <span class="bp-idea bp-idea-accent" style="--x:82.3;--y:-9.1;--dx:-2.66;--dy:2.32;--i:4"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a9 9 0 1 0 0 18c1.4 0 2.1-1.1 1.5-2.3-.7-1.4.3-2.9 1.9-2.9H18a3 3 0 0 0 3-3C21 7.6 17 3 12 3z"/><circle cx="7.6" cy="11" r="1.3" fill="currentColor"/><circle cx="10.3" cy="7.2" r="1.3" fill="currentColor"/><circle cx="15" cy="7.6" r="1.3" fill="currentColor"/></svg></span>
-                        <span class="bp-idea" style="--x:89.8;--y:2.0;--dx:-3.46;--dy:1.16;--i:5"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.8l2.3 6.4 6.4 2.3-6.4 2.3L12 20.2l-2.3-6.4-6.4-2.3 6.4-2.3z"/><path d="M19 3.5v3M17.5 5h3" /></svg></span>
-                    </div>
-                    <div class="bp-layer bp-brain-clip">
-                        <div class="bp-layer bp-brain-wrap">
-                            <img class="bp-layer bp-brain" src="resource/hero/brain.png" alt="" width="1000" height="1000">
-                            <img class="bp-layer bp-sparks" src="resource/hero/sparks.png" alt="" width="1000" height="1000">
-                        </div>
-                    </div>
-                </div>
-            </div>
         </section>
 
-        <section class="stats-strip" aria-label="Highlights">
-            <div class="stat">
-                <span class="stat-num" data-count="40.7" data-decimals="1" data-suffix="K">40.7K</span>
-                <span class="stat-label">YouTube views in 40 days</span>
+        <!-- ================= PROCESS ================= -->
+        <section class="section process" id="process">
+            <div class="head">
+                <p class="kicker">(04) Process</p>
+                <h2 class="title">How a project <span class="stroke">moves.</span></h2>
             </div>
-            <div class="stat">
-                <span class="stat-num" data-count="750" data-prefix="+">+750</span>
-                <span class="stat-label">subscribers gained</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num" data-count="963">963</span>
-                <span class="stat-label">hours of watch time</span>
-            </div>
-            <div class="stat">
-                <span class="stat-num" data-count="2" data-suffix=" yrs">2 yrs</span>
-                <span class="stat-label">creating for social media</span>
-            </div>
-        </section>
-
-        <section id="about" class="about section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">About Me.</h2>
-            </div>
-            <div class="about-content">
-                <p class="large-text">Hi, I’m <span class="text-gradient">Abhijeet Rajshree Sanjay Gorhe</span> — a
-                    Computer Science Engineer, full stack developer and video editor from Malegaon, Nashik
-                    (Maharashtra).</p>
-                <p>I studied <span class="highlight">B.Tech in Computer Science &amp; Engineering at Walchand College of
-                        Engineering, Sangli</span> (2022–2026). Today I work as a <span class="highlight">Full Stack Web
-                        Developer Intern at 10xTech</span>, building with React, TypeScript, Node.js and Docker — and
-                    before that I designed for the Rotaract Club of WCE.</p>
-                <p>For the last two years I’ve also been creating for social media and growing my own YouTube channel,
-                    so I edit with retention in mind, not just style. I work with <span class="highlight">YouTubers,
-                        creators and local businesses</span> across Nashik and Malegaon, and with clients anywhere
-                    online — and I’m going deeper into <span class="highlight">AI</span>: automations, chatbots, AI
-                    visuals and AI system architecture.</p>
-            </div>
-        </section>
-
-        <section id="services" class="services section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">Services.</h2>
-                <p>For YouTubers, creators and local businesses in Nashik, Malegaon and anywhere online.</p>
-            </div>
-            <div class="services-grid">
-                <article class="service-card">
-                    <span class="service-num">01</span>
-                    <h3>Video Editing</h3>
-                    <p>YouTube videos, Reels and Shorts edited for retention — pacing, captions, sound design and
-                        colour.</p>
-                </article>
-                <article class="service-card">
-                    <span class="service-num">02</span>
-                    <h3>Motion Graphics &amp; Explainers</h3>
-                    <p>Animated explainers, kinetic typography and map storytelling — like my Docker explainer.</p>
-                </article>
-                <article class="service-card">
-                    <span class="service-num">03</span>
-                    <h3>Graphic Design &amp; Web Development</h3>
-                    <p>Thumbnails, posters and social creatives — plus responsive websites and full-stack web apps
-                        built with React, Next.js and Node.js.</p>
-                </article>
-                <article class="service-card">
-                    <span class="service-num">04</span>
-                    <h3>Software &amp; AI Architecture Diagrams</h3>
-                    <p>Clear system-design visuals for software and AI products, plus AI automation workflows
-                        <em>(learning)</em>.</p>
-                </article>
-            </div>
-            <div class="tools-row">
-                <span class="tools-label">Creative tools</span>
-                <ul class="tools-list">
-                    <li>Premiere Pro</li>
-                    <li>After Effects</li>
-                    <li>Photoshop</li>
-                    <li>Illustrator</li>
-                    <li>Figma</li>
-                    <li>Adobe XD</li>
-                                        <li>ChatGPT &amp; Claude</li>
-                    <li>n8n</li>
-                    <li>Adobe Firefly</li>
-                </ul>
-            </div>
-            <div class="tools-row tools-row-dev">
-                <span class="tools-label">Dev stack</span>
-                <ul class="tools-list">
-                    <li>Java</li>
-                    <li>JavaScript</li>
-                    <li>TypeScript</li>
-                    <li>React.js</li>
-                    <li>Next.js</li>
-                    <li>Angular</li>
-                    <li>Node.js</li>
-                    <li>Express.js</li>
-                    <li>MongoDB</li>
-                    <li>PostgreSQL</li>
-                    <li>MySQL</li>
-                    <li>Docker</li>
-                    <li>Kubernetes</li>
-                    <li>GitHub</li>
-                    <li>WebRTC</li>
-                    <li>Web3</li>
-                </ul>
-            </div>
-        </section>
-
-        <section id="process" class="process section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">How I Work.</h2>
-                <p>Simple and transparent — from your first message to the final file.</p>
-            </div>
-            <ol class="process-steps">
-                <li>
-                    <span class="step-num">01</span>
-                    <h3>Brief</h3>
-                    <p>Tell me your goal, audience and deadline. I’ll ask the right questions.</p>
-                </li>
-                <li>
-                    <span class="step-num">02</span>
-                    <h3>Plan</h3>
-                    <p>Script, storyboard or style references, so we agree on the look before I start.</p>
-                </li>
-                <li>
-                    <span class="step-num">03</span>
-                    <h3>Create</h3>
-                    <p>Editing, motion graphics or design — with a draft you can review.</p>
-                </li>
-                <li>
-                    <span class="step-num">04</span>
-                    <h3>Deliver</h3>
-                    <p>Final files in the formats you need, plus a round of revisions.</p>
-                </li>
+            <ol class="steps">
+                <li><span>01</span><h3>Brief</h3><p>Your goal, audience, references and deadline.</p></li>
+                <li><span>02</span><h3>Plan</h3><p>Script, storyboard or look references — we agree before I cut.</p></li>
+                <li><span>03</span><h3>Create</h3><p>Edit, grade, motion and sound, with a draft for your review.</p></li>
+                <li><span>04</span><h3>Deliver</h3><p>Final files in every format you need, plus a round of revisions.</p></li>
             </ol>
         </section>
 
-        <section id="portfolio" class="portfolio section">
-            <div class="section-header">
-                <h2>Sample Work.</h2>
-                <p>Software, AI tools, video editing and graphic design — pick a category.</p>
-            </div>
-
-            <div class="work-tabs" role="tablist" aria-label="Work categories">
-                <button class="work-tab" role="tab" id="tab-software" aria-controls="panel-software" aria-selected="false" tabindex="-1">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><polyline points="8 6 2 12 8 18"></polyline><polyline points="16 6 22 12 16 18"></polyline></svg>
-                    <span>Software</span>
-                </button>
-                <button class="work-tab" role="tab" id="tab-ai" aria-controls="panel-ai" aria-selected="false" tabindex="-1">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"></path><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"></path></svg>
-                    <span>AI Tools</span>
-                </button>
-                <button class="work-tab" role="tab" id="tab-video" aria-controls="panel-video" aria-selected="true">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="5" width="15" height="14" rx="2"></rect><polygon points="17 10 22 7 22 17 17 14"></polygon></svg>
-                    <span>Video Editing</span>
-                </button>
-                <button class="work-tab" role="tab" id="tab-design" aria-controls="panel-design" aria-selected="false" tabindex="-1">
-                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19l7-7 3 3-7 7z"></path><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"></path><circle cx="11" cy="11" r="2"></circle></svg>
-                    <span>Graphic Design</span>
-                </button>
-            </div>
-
-            <!-- Software: static projects + GitHub repos tagged "portfolio" (added by script.js) -->
-            <div class="work-panel" id="panel-software" role="tabpanel" aria-labelledby="tab-software" tabindex="0" hidden>
-                <div class="slider-container fit">
-                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <div class="slider-wrapper">
-                        <div class="slider-track" data-repos="software">
-                            <div class="slide-item">
-                                <article class="project-card">
-                                    <span class="cred-kicker">Full-stack project &middot; 2026</span>
-                                    <h3>Digital Payment Management Web App</h3>
-                                    <p>A full-stack platform for secure peer-to-peer money transfers — JWT authentication and
-                                        authorization, REST APIs in Node.js &amp; Express (MVC), PostgreSQL and MongoDB data models, and
-                                        a responsive frontend wired end to end.</p>
-                                    <ul class="tl-tags">
-                                        <li>Node.js</li>
-                                        <li>Express.js</li>
-                                        <li>React.js</li>
-                                        <li>PostgreSQL</li>
-                                        <li>MongoDB</li>
-                                        <li>JWT</li>
-                                        <li>REST APIs</li>
-                                    </ul>
-                                    <a class="card-link" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">More on GitHub →</a>
-                                </article>
-                            </div>
-                            <div class="slide-item">
-                                <article class="soon-card">
-                                    <span class="cred-kicker">Coming soon &middot; GitHub</span>
-                                    <h3>Full projects are on their way</h3>
-                                    <p>I’m cleaning up and documenting my complete projects — source code, setup steps and live
-                                        demos — before publishing them on GitHub. Each one shows up here as soon as it’s live.</p>
-                                    <ol class="soon-steps" aria-label="Progress">
-                                        <li class="done">Built</li>
-                                        <li class="current">Documenting</li>
-                                        <li>Publishing</li>
-                                    </ol>
-                                    <div class="soon-actions">
-                                        <a class="soon-btn" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">Browse my GitHub →</a>
-                                        <a class="card-link" href="#contact">Need software built? Let’s talk</a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next-btn" aria-label="Next Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- AI Tools: GitHub repos tagged "portfolio" + "ai" (added by script.js) -->
-            <div class="work-panel" id="panel-ai" role="tabpanel" aria-labelledby="tab-ai" tabindex="0" hidden>
-                <div class="slider-container fit">
-                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <div class="slider-wrapper">
-                        <div class="slider-track" data-repos="ai">
-                            <div class="slide-item">
-                                <article class="soon-card">
-                                    <span class="cred-kicker">Coming soon &middot; GitHub</span>
-                                    <h3>AI tools &amp; automations</h3>
-                                    <p>I’m building AI automations (learning) — workflow bots, content helpers and small tools for
-                                        creators and local businesses. Each experiment will be published on GitHub with a short
-                                        demo, and appear here automatically.</p>
-                                    <ol class="soon-steps" aria-label="Progress">
-                                        <li class="done">Learning</li>
-                                        <li class="current">Building</li>
-                                        <li>Publishing</li>
-                                    </ol>
-                                    <div class="soon-actions">
-                                        <a class="soon-btn" href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener">Browse my GitHub →</a>
-                                        <a class="card-link" href="#contact">Have an idea to automate? Let’s talk</a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next-btn" aria-label="Next Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Video Editing: slides are added by script.js from resource/work/works.js -->
-            <div class="work-panel" id="panel-video" role="tabpanel" aria-labelledby="tab-video" tabindex="0">
-                <div class="slider-container">
-                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <div class="slider-wrapper">
-                        <div class="slider-track"></div>
-                    </div>
-
-                    <button class="slider-btn next-btn" aria-label="Next Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-            <!-- Graphic Design: slides are added by script.js from resource/work/design/ -->
-            <div class="work-panel" id="panel-design" role="tabpanel" aria-labelledby="tab-design" tabindex="0" hidden>
-                <div class="slider-container fit">
-                    <button class="slider-btn prev-btn" aria-label="Previous Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="15 18 9 12 15 6"></polyline>
-                        </svg>
-                    </button>
-
-                    <div class="slider-wrapper">
-                        <div class="slider-track">
-                            <div class="slide-item" data-soon="design">
-                                <article class="soon-card">
-                                    <span class="cred-kicker">Coming soon</span>
-                                    <h3>Design gallery</h3>
-                                    <p>YouTube thumbnails, channel art, posters and social creatives — I’m picking the best pieces
-                                        (with client permission) for this gallery.</p>
-                                    <ol class="soon-steps" aria-label="Progress">
-                                        <li class="done">Designed</li>
-                                        <li class="current">Curating</li>
-                                        <li>Publishing</li>
-                                    </ol>
-                                    <div class="soon-actions">
-                                        <a class="soon-btn" href="#contact">Need a design? Let’s talk →</a>
-                                    </div>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-
-                    <button class="slider-btn next-btn" aria-label="Next Slide">
-                        <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="2" fill="none">
-                            <polyline points="9 18 15 12 9 6"></polyline>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <section id="proof" class="proof section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">Proof.</h2>
-                <p>My own YouTube channel: <span class="highlight">40.7K views</span>, <span class="highlight">+750 subscribers</span> and <span class="highlight">963 watch hours</span> in just 40 days — quality content, no shortcuts.</p>
-            </div>
-            <figure class="proof-shot">
-                <img src="resource/youtube-growth.png" alt="YouTube Studio analytics showing one month of channel growth"
-                    loading="lazy" onerror="this.closest('section').hidden = true">
-            </figure>
-        </section>
-
-        <section id="experience" class="experience section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">Experience.</h2>
-                <p>Where I’ve built, designed and created.</p>
+        <!-- ================= EXPERIENCE ================= -->
+        <section class="section experience" id="experience">
+            <div class="head">
+                <p class="kicker">(05) Experience</p>
+                <h2 class="title">Where I’ve <span class="stroke">built.</span></h2>
             </div>
             <ol class="timeline">
-                <li class="tl-item">
-                    <div class="tl-meta">
-                        <span class="tl-date">Jul 2026 – Present</span>
-                        <span class="tl-place">Mumbai, India</span>
-                    </div>
-                    <div class="tl-body">
+                <li class="tl">
+                    <div class="tl-when"><b>Jul 2026 – Present</b><span>Mumbai, India</span></div>
+                    <div class="tl-what">
                         <h3>Full Stack Web Developer Intern</h3>
-                        <a class="tl-org" href="https://10xtech.co.in/" target="_blank" rel="noopener">10xTech</a>
-                        <p>Building production features with React.js and TypeScript, REST APIs with Node.js, Express and
-                            Sequelize, and MySQL data models — containerised with Docker and shipped through code
-                            reviews, QA and GitHub/Jira workflows.</p>
-                        <ul class="tl-tags">
-                            <li>React.js</li>
-                            <li>TypeScript</li>
-                            <li>Node.js</li>
-                            <li>Express.js</li>
-                            <li>MySQL</li>
-                            <li>Sequelize</li>
-                            <li>Docker</li>
-                        </ul>
+                        <a href="https://10xtech.co.in/" target="_blank" rel="noopener">10xTech &#8599;</a>
+                        <p>Production features with React.js and TypeScript, REST APIs with Node.js, Express and Sequelize, and MySQL data models — containerised with Docker and shipped through code reviews, QA and GitHub/Jira workflows.</p>
                     </div>
                 </li>
-                <li class="tl-item">
-                    <div class="tl-meta">
-                        <span class="tl-date">Last 2 years</span>
-                        <span class="tl-place">Online</span>
-                    </div>
-                    <div class="tl-body">
+                <li class="tl">
+                    <div class="tl-when"><b>Last 2 years</b><span>Online</span></div>
+                    <div class="tl-what">
                         <h3>Content Creator &amp; Video Editor</h3>
-                        <a class="tl-org" href="https://www.youtube.com/@abhijeetgorhe" target="_blank" rel="noopener">YouTube · @abhijeetgorhe</a>
-                        <p>Grew my own channel to 40.7K views and +750 subscribers in 40 days. Editing Reels, Shorts,
-                            explainers and motion graphics with a focus on audience retention.</p>
-                        <ul class="tl-tags">
-                            <li>Premiere Pro</li>
-                            <li>After Effects</li>
-                            <li>Storytelling</li>
-                        </ul>
+                        <a href="https://www.youtube.com/@abhijeetgorhe" target="_blank" rel="noopener">YouTube · @abhijeetgorhe &#8599;</a>
+                        <p>Grew my own channel to 40.7K views and +750 subscribers in 40 days. Documentaries, Reels, Shorts, explainers and colour grading with a focus on retention.</p>
                     </div>
                 </li>
-                <li class="tl-item">
-                    <div class="tl-meta">
-                        <span class="tl-date">Dec 2022 – Aug 2023</span>
-                        <span class="tl-place">Sangli, India</span>
-                    </div>
-                    <div class="tl-body">
+                <li class="tl">
+                    <div class="tl-when"><b>Dec 2022 – Aug 2023</b><span>Sangli, India</span></div>
+                    <div class="tl-what">
                         <h3>Web Designer</h3>
-                        <a class="tl-org" href="https://www.rotaractwce.org/" target="_blank" rel="noopener">Rotaract Club of WCE</a>
-                        <p>Designed UI mockups, social media creatives, promotional assets and reusable templates for
-                            events and digital initiatives, applying UI/UX principles for clear, consistent visuals.</p>
-                        <ul class="tl-tags">
-                            <li>Figma</li>
-                            <li>Adobe XD</li>
-                            <li>Photoshop</li>
-                        </ul>
+                        <a href="https://www.rotaractwce.org/" target="_blank" rel="noopener">Rotaract Club of WCE &#8599;</a>
+                        <p>UI mockups, social media creatives, promotional assets and reusable templates for events and digital initiatives.</p>
                     </div>
                 </li>
             </ol>
 
-            <h3 class="sub-heading">Certifications</h3>
-            <div class="cert-grid">
-                <article class="cred-card cert-card">
-                    <a class="cert-thumb" href="resource/certificates/ai-foundations-openai.jpg" target="_blank" rel="noopener"
-                        aria-label="Open AI Foundations certificate full size">
-                        <img src="resource/certificates/ai-foundations-openai-thumb.jpg" alt="OpenAI Academy course completion certificate for AI Foundations awarded to Abhijeet Gorhe" width="640" height="452" loading="lazy">
-                    </a>
-                    <span class="cred-kicker">AI</span>
-                    <h3>AI Foundations</h3>
-                    <p>OpenAI Academy</p>
-                    <p class="cred-meta">Issued Jun 2026 &middot; ID shq5gpjncf</p>
-                    <a class="card-link" href="https://academy.openai.com/public/certificate/shq5gpjncf" target="_blank" rel="noopener">Verify certificate →</a>
-                </article>
-                <article class="cred-card cert-card">
-                    <a class="cert-thumb" href="resource/certificates/full-stack-100xdevs.jpg" target="_blank" rel="noopener"
-                        aria-label="Open 0-100 Full Stack Web Development certificate full size">
-                        <img src="resource/certificates/full-stack-100xdevs-thumb.jpg" alt="100xdevs certificate of achievement for the 0-100 Full Stack Web Development Course awarded to Abhijeet Sanjay Gorhe" width="640" height="452" loading="lazy">
-                    </a>
-                    <span class="cred-kicker">Full Stack</span>
-                    <h3>0-100 Full Stack Web Development</h3>
-                    <p>100xdevs &middot; Harkirat Singh</p>
-                    <p class="cred-meta">Completed Jun 2026 &middot; No. XKOUG16P</p>
-                </article>
-                <article class="cred-card cert-card">
-                    <a class="cert-thumb" href="resource/certificates/java-full-stack-sevenmentor.jpg" target="_blank" rel="noopener"
-                        aria-label="Open Java with Full Stack Web Development certificate full size">
-                        <img src="resource/certificates/java-full-stack-sevenmentor-thumb.jpg" alt="Certificate of Achievement awarded to Abhijeet Sanjay Gorhe for Java with Full Stack Web Development by SevenMentor" width="640" height="452" loading="lazy">
-                    </a>
-                    <span class="cred-kicker">Java</span>
-                    <h3>Java with Full Stack Web Development</h3>
-                    <p>SevenMentor Pvt. Ltd. &middot; with Spoken Tutorial, IIT Bombay</p>
-                    <p class="cred-meta">Jun 2024 – Feb 2025 &middot; Issued Jul 2026 &middot; ID SM-2026-2N7SX8</p>
-                </article>
+            <h3 class="sub">Certifications</h3>
+            <div class="certs">
+                <a class="cert" href="https://academy.openai.com/public/certificate/shq5gpjncf" target="_blank" rel="noopener">
+                    <img src="resource/certificates/ai-foundations-openai-thumb.jpg" alt="OpenAI Academy certificate for AI Foundations awarded to Abhijeet Gorhe" width="640" height="452" loading="lazy">
+                    <span><b>AI Foundations</b>OpenAI Academy · Jun 2026 · Verify &#8599;</span>
+                </a>
+                <a class="cert" href="resource/certificates/full-stack-100xdevs.jpg" target="_blank" rel="noopener">
+                    <img src="resource/certificates/full-stack-100xdevs-thumb.jpg" alt="100xdevs certificate for the 0-100 Full Stack Web Development Course awarded to Abhijeet Sanjay Gorhe" width="640" height="452" loading="lazy">
+                    <span><b>0-100 Full Stack Web Development</b>100xdevs · Harkirat Singh · Jun 2026</span>
+                </a>
+                <a class="cert" href="resource/certificates/java-full-stack-sevenmentor.jpg" target="_blank" rel="noopener">
+                    <img src="resource/certificates/java-full-stack-sevenmentor-thumb.jpg" alt="SevenMentor certificate for Java with Full Stack Web Development awarded to Abhijeet Sanjay Gorhe" width="640" height="452" loading="lazy">
+                    <span><b>Java with Full Stack Web Development</b>SevenMentor · with Spoken Tutorial, IIT Bombay · Jul 2026</span>
+                </a>
             </div>
 
-            <div class="edu-wrap">
-                <article class="cred-card">
-                    <span class="cred-kicker">Education</span>
-                    <ul class="edu-list">
-                        <li>
-                            <strong>B.Tech, Computer Science &amp; Engineering</strong>
-                            <span>Walchand College of Engineering, Sangli &middot; 2022 – 2026</span>
-                        </li>
-                        <li>
-                            <strong>Higher Secondary (HSC) &middot; 80% &amp; (MHT-CET) &middot; 94.44 %tile</strong>
-                            <span>Lt. B.R. Patil Jr. College of Science and Arts, Malegaon &middot; 2020 – 2022</span>
-                        </li>
-                        <li>
-                            <strong>Secondary School (SSC) &middot; 94.40%</strong>
-                            <span>Karmveer Bhausaheb Hire High School &amp; Jr. College, Malegaon &middot; 2020</span>
-                        </li>
-                    </ul>
-                </article>
-            </div>
+            <h3 class="sub">Education</h3>
+            <ul class="edu">
+                <li><b>B.Tech, Computer Science &amp; Engineering</b><span>Walchand College of Engineering, Sangli · 2022 – 2026</span></li>
+                <li><b>HSC · 80% &amp; MHT-CET · 94.44 %tile</b><span>Lt. B.R. Patil Jr. College of Science and Arts, Malegaon · 2020 – 2022</span></li>
+                <li><b>SSC · 94.40%</b><span>Karmveer Bhausaheb Hire High School &amp; Jr. College, Malegaon · 2020</span></li>
+            </ul>
         </section>
 
-        <section id="faq" class="faq section">
-            <div class="section-header">
-                <h2 class="text-gradient-alt">FAQ.</h2>
-                <p>Quick answers for clients in Nashik, Malegaon and online.</p>
+        <!-- ================= FAQ ================= -->
+        <section class="section faq" id="faq">
+            <div class="head">
+                <p class="kicker">(06) FAQ</p>
+                <h2 class="title">Good <span class="stroke">questions.</span></h2>
             </div>
             <div class="faq-list">
-                <details class="faq-item">
-                    <summary>Are you a video editor in Nashik?</summary>
-                    <p>Yes. I’m Abhijeet Gorhe, a video editor and motion designer from Malegaon in Nashik district,
-                        Maharashtra. I edit YouTube videos, Reels and Shorts for creators and businesses in Nashik city,
-                        Malegaon and anywhere online.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Do you do graphic design and websites for businesses in Nashik and Malegaon?</summary>
-                    <p>Yes — thumbnails, posters and social media creatives, plus websites and full-stack web apps
-                        (React, Next.js, Node.js) for shops, gyms, clinics, coaching classes and other local
-                        businesses.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Do you offer AI automation?</summary>
-                    <p>I’m a Computer Science Engineer actively building AI skills — automations, chatbots, AI-generated
-                        visuals and AI system architecture with modern AI models. I take on small AI automation projects
-                        and I’m upfront about scope.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>Can you work remotely?</summary>
-                    <p>Yes. I work in person around Nashik and Malegaon and remotely with clients across India and
-                        worldwide.</p>
-                </details>
-                <details class="faq-item">
-                    <summary>How do I hire you?</summary>
-                    <p>Fill in the contact form below or email <a href="mailto:abhijeetgorhe8@gmail.com">abhijeetgorhe8@gmail.com</a>
-                        with what you need, and I’ll get back to you.</p>
-                </details>
+                <details><summary>Are you a video editor in Nashik?</summary><p>Yes. I’m Abhijeet Gorhe, a video editor and motion designer from Malegaon in Nashik district, Maharashtra. I edit YouTube videos, documentaries, Reels and Shorts for creators and businesses in Nashik city, Malegaon and anywhere online.</p></details>
+                <details><summary>Do you do colour grading?</summary><p>Yes — from correcting flat or log footage to building a consistent cinematic look, often matched to a reference you love. See the colour grading edits above.</p></details>
+                <details><summary>What software do you edit with?</summary><p>Premiere Pro for the edit, After Effects for motion design, Lightroom and Photoshop for stills and looks, Illustrator and Adobe XD for graphics — with AI tools like ChatGPT, Claude and Google AI to speed up research and scripting.</p></details>
+                <details><summary>Can you match the style of a video I like?</summary><p>Yes — send me the reference. Most of the edits above sit side by side with the reference I was matching, so you can judge the result yourself.</p></details>
+                <details><summary>Can you work remotely?</summary><p>Yes. I work in person around Nashik and Malegaon and remotely with clients across India and worldwide.</p></details>
             </div>
         </section>
 
-        <section id="contact" class="contact section">
-            <div class="section-header">
-                <h2>Stay in Touch.</h2>
-                <p>Tell me about your project and I’ll get back to you.</p>
-            </div>
-
-            <form id="contact-form" class="contact-form" action="https://formsubmit.co/abhijeetgorhe8@gmail.com"
-                method="POST" novalidate>
-                <input type="hidden" name="_subject" value="New project enquiry from abhijeetgorhe.me">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true">
-
-                <div class="form-grid">
-                    <div class="form-field">
-                        <label for="cf-name">Name</label>
-                        <input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your full name"
-                            required minlength="2">
-                        <span class="form-error" aria-live="polite"></span>
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-email">Official email</label>
-                        <input id="cf-email" name="email" type="email" autocomplete="email"
-                            placeholder="you@yourcompany.com" required>
-                        <span class="form-error" aria-live="polite"></span>
-                    </div>
-                    <div class="form-field">
-                        <label for="cf-phone">Phone number</label>
-                        <input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210"
-                            required>
-                        <span class="form-error" aria-live="polite"></span>
-                    </div>
-                    <div class="form-field form-field-full">
-                        <label for="cf-message">Message</label>
-                        <textarea id="cf-message" name="message" rows="5"
-                            placeholder="What do you want to grow? Reels, animation, editing, design…" required
-                            minlength="10"></textarea>
-                        <span class="form-error" aria-live="polite"></span>
-                    </div>
+        <!-- ================= CONTACT ================= -->
+        <section class="contact" id="contact">
+            <div class="contact-panel">
+                <div class="hero-grid" aria-hidden="true">
+                    <i style="--x:25%;--y:50%"></i><i style="--x:50%;--y:50%"></i><i style="--x:75%;--y:50%"></i>
                 </div>
-
-                <div class="form-actions">
-                    <button type="submit" class="artistic-btn primary form-submit">
-                        <span class="btn-label">Send Message</span>
-                    </button>
-                    <p class="form-status" role="status" aria-live="polite"></p>
+                <div class="contact-stack" aria-hidden="true">
+                    <span class="stroke-row">LET'S TALK</span>
+                    <span class="solid-row">LET'S TALK</span>
+                    <span class="stroke-row">LET'S TALK</span>
                 </div>
-            </form>
-
-            <div class="contact-links">
-                <a href="https://www.linkedin.com/in/abhijeet-gorhe-383794254/" target="_blank" rel="noopener me" class="contact-item">
-                    <span class="contact-label">LinkedIn</span>
-                    <span class="contact-value">Abhijeet Gorhe</span>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener me" class="contact-item">
-                    <span class="contact-label">GitHub</span>
-                    <span class="contact-value">@abhijeetgorhe26</span>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="https://www.youtube.com/@abhijeetgorhe" target="_blank" rel="noopener me" class="contact-item">
-                    <span class="contact-label">YouTube</span>
-                    <span class="contact-value">@abhijeetgorhe</span>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
-                <a href="mailto:abhijeetgorhe8@gmail.com" class="contact-item">
-                    <span class="contact-label">Email</span>
-                    <span class="contact-value">abhijeetgorhe8@gmail.com</span>
-                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none">
-                        <line x1="5" y1="12" x2="19" y2="12"></line>
-                        <polyline points="12 5 19 12 12 19"></polyline>
-                    </svg>
-                </a>
+                <h2 class="sr-only">Contact</h2>
+                <div class="contact-body">
+                    <form id="contact-form" class="form" action="https://formsubmit.co/abhijeetgorhe8@gmail.com" method="POST" novalidate>
+                        <input type="hidden" name="_subject" value="New project enquiry from abhijeetgorhe.me">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <p class="form-title">Tell me about your project.</p>
+                        <div class="field"><label for="cf-name">Name</label><input id="cf-name" name="name" type="text" autocomplete="name" placeholder="Your full name" required minlength="2"><span class="err" aria-live="polite"></span></div>
+                        <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" autocomplete="email" placeholder="you@company.com" required><span class="err" aria-live="polite"></span></div>
+                        <div class="field"><label for="cf-phone">Phone</label><input id="cf-phone" name="phone" type="tel" autocomplete="tel" placeholder="+91 98765 43210" required><span class="err" aria-live="polite"></span></div>
+                        <div class="field full"><label for="cf-message">Message</label><textarea id="cf-message" name="message" rows="4" placeholder="Documentary edit, colour grade, Shorts, a website…" required minlength="10"></textarea><span class="err" aria-live="polite"></span></div>
+                        <div class="form-foot"><button type="submit" class="btn btn-dark"><span class="btn-label">Send message</span> &#8599;</button><p class="form-status" role="status" aria-live="polite"></p></div>
+                    </form>
+                    <ul class="links">
+                        <li><a href="mailto:abhijeetgorhe8@gmail.com"><small>Email</small>abhijeetgorhe8@gmail.com<span aria-hidden="true">&#8599;</span></a></li>
+                        <li><a href="https://www.linkedin.com/in/abhijeet-gorhe-383794254/" target="_blank" rel="noopener me"><small>LinkedIn</small>Abhijeet Gorhe<span aria-hidden="true">&#8599;</span></a></li>
+                        <li><a href="https://www.youtube.com/@abhijeetgorhe" target="_blank" rel="noopener me"><small>YouTube</small>@abhijeetgorhe<span aria-hidden="true">&#8599;</span></a></li>
+                        <li><a href="https://github.com/abhijeetgorhe26" target="_blank" rel="noopener me"><small>GitHub</small>@abhijeetgorhe26<span aria-hidden="true">&#8599;</span></a></li>
+                    </ul>
+                </div>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        <p>©2026 Abhijeet Gorhe. All rights reserved.</p>
+        <span>&copy;2026 Abhijeet Gorhe</span>
+        <span>Malegaon &middot; Nashik &middot; India</span>
+        <a href="#home">Back to top &#8593;</a>
     </footer>
 
-    <script src="resource/work/works.js"></script>
-    <script src="script.js?v=13"></script>
+    <script src="resource/work/works.js?v=3"></script>
+    <script src="script.js?v=31"></script>
 </body>
 
 </html>
