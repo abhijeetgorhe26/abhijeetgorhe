@@ -4,7 +4,7 @@
 
 if git diff --cached --name-only | grep -q '^resource/work/'; then
     node tools/build-work.mjs || exit 1
-    git add resource/work/works.js
+    git add resource/work/works.js sitemap.xml index.html   # work list + video SEO data
     # Posters the build made for newly committed videos
     git diff --cached --name-only --diff-filter=AM | grep -E '^resource/work/video/[^/]+\.(mp4|webm|mov)$' |
         while read -r video; do

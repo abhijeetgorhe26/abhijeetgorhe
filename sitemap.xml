@@ -1,12 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
   <url>
     <loc>https://abhijeetgorhe.me/</loc>
-    <lastmod>2026-10-08</lastmod>
+    <lastmod>2026-11-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://abhijeetgorhe.me/resource/abhijeet-gorhe.jpg</image:loc>
+      <image:loc>https://abhijeetgorhe.me/resource/hero/portrait.webp</image:loc>
     </image:image>
+    <image:image>
+      <image:loc>https://abhijeetgorhe.me/resource/og-image.jpg</image:loc>
+    </image:image>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/dhruv-rathee-intro.jpg</video:thumbnail_loc>
+      <video:title>Case File: Lalganj — Documentary Intro</video:title>
+      <video:description>Crime-documentary cold open: case-file title, animated maps, location pin and on-screen ID cards.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/dhruv-rathee-intro.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/comparison-dhruv-9x16.jpg</video:thumbnail_loc>
+      <video:title>Same Story, New Edit</video:title>
+      <video:description>My cut of a Dhruv Rathee documentary segment, shown above the original.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/comparison-dhruv-9x16.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/comparison-reference-30s.jpg</video:thumbnail_loc>
+      <video:title>The Cola Price War</video:title>
+      <video:description>Business story told with 3D podiums, price tags and kinetic titles — rebuilt from a reference reel.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/comparison-reference-30s.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/ai-nature-reel.jpg</video:thumbnail_loc>
+      <video:title>If Nature &amp; AI Worked Together</video:title>
+      <video:description>A talking-head reel re-imagined as a visual story — maps, B-roll and AI-generated scenes.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/ai-nature-reel.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/omkar-shorts-60s.jpg</video:thumbnail_loc>
+      <video:title>Science Experiment Short</video:title>
+      <video:description>60-second kids science Short for Omkar — hook, captions, BOOM moment and a quick explainer card.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/omkar-shorts-60s.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/color-compare.jpg</video:thumbnail_loc>
+      <video:title>Warm Cinematic Grade</video:title>
+      <video:description>Natural footage pushed into a warm, emotional cinematic look.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/color-compare.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/color-grade.jpg</video:thumbnail_loc>
+      <video:title>Moody Room Grade</video:title>
+      <video:description>Flat indoor footage graded into a low-key, filmic mood.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/color-grade.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
+    <video:video>
+      <video:thumbnail_loc>https://abhijeetgorhe.me/resource/work/video/color-final.jpg</video:thumbnail_loc>
+      <video:title>Fashion Shoot Grade</video:title>
+      <video:description>Skin tones, colour separation and a clean, rich look for an outdoor shoot.</video:description>
+      <video:content_loc>https://abhijeetgorhe.me/resource/work/video/color-final.mp4</video:content_loc>
+      <video:publication_date>2026-11-16</video:publication_date>
+    </video:video>
   </url>
 </urlset>
