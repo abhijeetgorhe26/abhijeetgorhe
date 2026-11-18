@@ -2,7 +2,7 @@
    Abhijeet Gorhe — portfolio
    Dark (default): burnt-orange panels on maroon-black, white + black for contrast.
    Light:          orange -> green, black -> white, type in dark glossy red.
-   Type: Poppins; Caveat for the handwritten notes.
+   Type: Poppins throughout.
    Every colour is a token below, so the two themes only differ in this block.
    ========================================================= */
 
@@ -47,15 +47,12 @@
     --on-strong: #f6efe8;
     --on-white: #0b0908;
     --on-white-muted: #6d5a52;
-    --hand-ink: #ffd23f;
     --focus: #ffd23f;
-    --sticky: #ffd23f;
 
     --gut: clamp(16px, 2.4vw, 32px);
     --radius: 18px;
     --ease: cubic-bezier(.2, .7, .1, 1);
     --font: 'Poppins', system-ui, -apple-system, 'Segoe UI', sans-serif;
-    --hand: 'Caveat', 'Comic Sans MS', cursive;
     --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .22 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
     color-scheme: dark;
 }
@@ -97,7 +94,6 @@
     --on-strong: #ffffff;
     --on-white: #7d0a12;
     --on-white-muted: #9a4a50;
-    --hand-ink: #2f7d27;
     --focus: #7d0a12;
     color-scheme: light;
 }
@@ -287,17 +283,18 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     text-transform: uppercase; letter-spacing: 0.02em;
     color: var(--panel-text);
 }
-.hero-note {
+.hero-status {
     position: absolute; z-index: 3;
-    left: 6%; top: 55%;
-    padding: 18px 20px 14px;
-    font-family: var(--hand); font-size: 26px; font-weight: 700; line-height: 1.05;
-    color: var(--on-white);
-    background: linear-gradient(160deg, rgba(255,255,255,.4), transparent 45%), var(--sticky);
-    box-shadow: 0 2px 2px rgba(0,0,0,.15), 0 16px 24px -12px rgba(0,0,0,.5);
-    rotate: -6deg;
+    left: 4%; top: calc(37% - 52px);
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 7px 14px;
+    border: 1px solid var(--panel-grid);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--panel-text);
 }
-.pin { position: absolute; top: -8px; left: 50%; width: 18px; height: 18px; margin-left: -9px; border-radius: 50%; background: radial-gradient(circle at 35% 30%, #777, #111 62%); box-shadow: 2px 4px 5px rgba(0,0,0,.4); }
 
 .hero-latest {
     position: absolute; z-index: 3;
@@ -308,14 +305,14 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     color: var(--on-white);
     border-radius: 6px;
     box-shadow: 0 24px 40px -18px var(--shadow);
-    rotate: 2deg;
-    transition: rotate 0.35s var(--ease), translate 0.35s var(--ease);
+    transition: translate 0.35s var(--ease);
 }
-.hero-latest:hover { rotate: 0deg; translate: 0 -4px; }
+.hero-latest:hover { translate: 0 -4px; }
 .hero-latest-media { display: block; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 3px; background: var(--surface); }
 .hero-latest-media img { width: 100%; height: 100%; object-fit: cover; }
-.hero-latest-meta { display: flex; align-items: center; gap: 6px; padding: 8px 4px 0; font-size: 12px; font-weight: 600; }
-.hero-latest-meta em { margin-left: auto; font-style: normal; font-weight: 400; color: var(--on-white-muted); white-space: nowrap; }
+.hero-latest-meta { display: grid; grid-template-columns: 1fr auto; column-gap: 8px; padding: 10px 4px 2px; font-size: 13px; font-weight: 600; }
+.hero-latest-meta small { grid-column: 1 / -1; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--on-white-muted); margin-bottom: 2px; }
+.hero-latest-meta em { font-style: normal; font-weight: 400; color: var(--on-white-muted); white-space: nowrap; }
 .hero-latest-meta [data-latest-title] { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 
 .hero-foot { position: absolute; z-index: 4; left: 4%; bottom: 3%; }
@@ -350,7 +347,6 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .talk-text span { font-size: 12px; color: var(--on-card-muted); }
 .talk-go { align-self: end; display: grid; place-items: center; width: 34px; height: 34px; border-radius: 3px; background: var(--paper); color: var(--on-paper); font-weight: 700; transition: background 0.25s, color 0.25s; }
 .talk-card:hover .talk-go { background: var(--accent); color: var(--on-accent); }
-.talk-spark { position: absolute; top: 8px; right: 12px; font-size: 13px; color: var(--on-card-muted); }
 
 /* =========================================================
    MARQUEE BAND
@@ -411,7 +407,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
     font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
 }
-.card-badge.is-compare { top: auto; bottom: 12px; background: var(--sticky); color: #0b0908; }
+.card-badge.is-compare { top: auto; bottom: 12px; background: var(--paper); color: var(--on-paper); }
 .card-play {
     position: absolute; right: 12px; bottom: 12px; z-index: 2;
     display: grid; place-items: center; width: 46px; height: 46px; border-radius: 50%;
@@ -472,7 +468,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .svc-arrow { justify-self: end; font-size: 24px; transition: transform 0.4s var(--ease); }
 .svc:hover .svc-arrow { transform: rotate(45deg); }
 .tools { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 40px; }
-.tools-label { font-family: var(--hand); font-size: 28px; color: var(--hand-ink); }
+.tools-label { margin-right: 4px; }
 
 /* ---------- About ---------- */
 .about { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(36px, 6vw, 96px); align-items: center; }
@@ -482,12 +478,10 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     background: #fff;
     border: 1px solid var(--line);
     border-radius: 6px;
-    rotate: -3deg;
     box-shadow: 0 30px 50px -24px var(--shadow);
 }
 .about-photo img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: top; border-radius: 3px; background: linear-gradient(160deg, var(--panel-1), var(--panel-2)); }
-.about-photo figcaption { position: absolute; left: 16px; bottom: 14px; font-family: var(--hand); font-size: 24px; color: var(--on-white); }
-.about-photo::before { content: ""; position: absolute; top: -14px; left: 50%; width: 110px; height: 30px; margin-left: -55px; background: rgba(240, 230, 200, 0.9); box-shadow: 0 1px 2px rgba(0,0,0,.12); rotate: 3deg; z-index: 2; }
+.about-photo figcaption { position: absolute; left: 16px; bottom: 16px; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--on-white-muted); }
 .about-text .big { margin: 26px 0 16px; font-size: clamp(19px, 1.7vw, 23px); line-height: 1.5; color: var(--text); }
 .about-text p:not(.big):not(.kicker) { color: var(--muted); margin-bottom: 14px; }
 .about-text strong { color: var(--text); font-weight: 600; }
@@ -608,7 +602,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 @media (max-width: 1100px) {
     .nav-links { display: none; }
     .hero-tagline { top: 16%; max-width: 280px; }
-    .hero-note { top: 34%; }
+    .hero-status { top: calc(16% - 48px); }
     .hero-latest { width: 190px; }
     .talk-card { width: 290px; }
     .work-grid { --row: 320px; }
@@ -627,7 +621,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
     .hero-panel { height: auto; min-height: 0; max-height: none; display: flex; flex-direction: column; padding: 84px 18px 0; }
     .hero-ghost { top: 150px; font-size: 31vw; }
     .hero-tagline { position: relative; inset: auto; order: 1; max-width: 250px; font-size: 13px; }
-    .hero-note { left: auto; right: 14px; top: 92px; font-size: 20px; padding: 14px 14px 10px; rotate: 5deg; }
+    .hero-status { position: relative; inset: auto; order: 0; align-self: flex-start; margin-bottom: 14px; font-size: 11px; }
     .hero-portrait { position: relative; inset: auto; order: 2; transform: none; height: auto; width: 112%; max-width: none; margin: 22px -6% 0; }
     .hero-foot { left: 18px; bottom: 104px; }
     .hero-name { font-size: 21.5vw; }
